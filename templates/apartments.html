@@ -49,6 +49,17 @@
     <br>
 
     <div class="container">
-        
+      {%for i in range(0, length)%}
+        <div class="row card-deck">
+          <div class="col-md-8 col-sm-6 d-flex align-items-stretch">
+            <div class="card text-left" style="margin: 5px;">
+              <img src="{{url_for('file', filename=apartments[i].image_name )}}" class="card-img-left" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
+              <div class="card-body" style="margin:0px;">
+                <p class="card-text">{{ apartments[i].title }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {%endfor%}
     </div>
 {% endblock content %}
