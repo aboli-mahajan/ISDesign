@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, url_for, request, session, redirect
-from dnspython import dns
+
 import bcrypt
 
 app = Flask(__name__)
@@ -19,9 +19,20 @@ def index():
 def signup():
     return render_template('register.html')
 
-@app.route('/login')
+@app.route('/login', methods=['POST','GET'])
 def login():
+    if request.method == 'POST':
+        users = mongo.db.users
+        login_user = users.find_one({'email': request.form['username']})
+
+        if login_user:
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+                session['email'] = request.form['username']
+                return redirect(url_for('index'))
+        return 'invalid user'
+
     return render_template('login.html')
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -33,7 +44,7 @@ def register():
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'email': request.form['email'], 'password': hashpass})
             session['email'] = request.form['email']
-            return redirect(url_for('home'))
+            return redirect(url_for('index'))
 
         return 'That email already exists!'
 
@@ -54,5 +65,7 @@ def apartments():
     return render_template('apartments.html')
 
 if __name__ == '__main__':
-    app.secret_key = 'mysecret1'
+
     app.run()
+
+app.secret_key = 'mysecret1'
