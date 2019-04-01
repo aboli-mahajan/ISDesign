@@ -26,9 +26,20 @@ def index():
 def signup():
     return render_template('register.html')
 
-@app.route('/login')
+@app.route('/login', methods=['POST','GET'])
 def login():
+    if request.method == 'POST':
+        users = mongo.db.users
+        login_user = users.find_one({'email': request.form['username']})
+
+        if login_user:
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+                session['email'] = request.form['username']
+                return redirect(url_for('index'))
+        return 'invalid user'
+
     return render_template('login.html')
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -88,4 +99,4 @@ def fetch_apartments(params):
 if __name__ == '__main__':
     app.run()
 
-app.secret_key = 'mysecret'
+app.secret_key = 'mysecret1'
