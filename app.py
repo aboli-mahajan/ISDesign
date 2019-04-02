@@ -22,6 +22,10 @@ def index():
     SfApartments = fetch_apartments({'city': 'San Francisco'})
     return render_template('index.html', AustinApartments=AustinApartments, MiamiApartments=MiamiApartments, NycApartments=NycApartments, SfApartments=SfApartments)
 
+@app.route('/about_us')
+def aboutus():
+    return  render_template('AboutUs.html')
+
 @app.route('/signup')
 def signup():
     return render_template('register.html')
