@@ -1,0 +1,176 @@
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+@font-face {
+    font-family: "Crimson";
+    src: url('CrimsonText-Regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('Roboto-Regular.ttf') format("truetype");
+}
+
+body {
+
+	background: url("static/images/HomeBackground.jpg") no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+#page {
+	height: 900px; /* fixing page height */
+	font-size: 16px;
+}
+
+.page_container {
+	font-size: medium;
+}
+
+.home{
+
+	background-size: cover;
+	background: no-repeat;
+
+}
+
+.content-section {
+	background-color: white;
+	height: 50%;
+	opacity: 1;
+	justify-content: center;
+	box-shadow: 10px 10px 5px black;
+	margin: 7%;
+	font-family: Roboto;
+	padding-left: 1%;
+	padding-top: 3%;
+	padding-right: 1%;
+	padding-bottom: 3%;
+}
+
+.button {
+  background-color: #641f3c;
+  color: white;
+  padding: 10px 45px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 7px 2px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.team {
+	font-size: 0.4rem;
+}
+
+.parallax {
+
+    height: 730px;
+	background-image: url("HomeBackground.jpg");
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+}
+
+.desc_text {
+	float: right;
+}
+
+.img-team {
+	opacity: 2;
+}
+
+#content {
+	width: 50%;
+	height: 90.625%; /* 725px (of #content) / 900px (of page height) */
+	background-color: #fff;
+	float: right;
+	text-align: center;
+	padding: 1.320132013%; /* 10px (of padding in content)/ 1515px (of screen width) */
+	margin: 1.320132013%; /* 20px (of content margin)/ 1515px (of screen width) */
+}
+
+#content p {
+	color: #000;
+	font-size: 1.05em;
+	font-family: Roboto;
+}
+
+#content h3 {
+	font-family: Crimson;
+	margin-top: 1.320132013%; /* 10px (of margin top)/ 757.5px (of column width) */
+	font-size: 1.5em;
+}
+
+#icon_set .column {
+	width: 25%;
+	padding: 4.620462046%; /* 35px (of padding in content)/ 757.5px (of column width) */;
+}
+
+#icon_set p {
+	font-weight: bold;
+}
+
+#home {
+	float: left;
+}
+#card_template {
+	 z-index: 5;
+}
+#roommate {
+	float: right;
+}
+
+#city {
+	float: left;
+}
+
+p {
+	padding: 0;
+	text-align: center;
+	font-weight: 440;
+}
+
+#meettheteam img {
+	height: 150px;
+	width: 200px;
+	display: inline-block;
+}
+
+h4 {
+	margin-top: 5%;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
