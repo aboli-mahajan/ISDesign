@@ -88,9 +88,9 @@ def addapartments():
 @app.route('/apartments')
 def apartments():
     # Does not work
-    AustinApartments = fetch_apartments({'city':'Austin'})
-    length = AustinApartments.count()
-    return render_template('apartments.html', AustinApartments=AustinApartments, length=length)
+    apartmentsList = fetch_apartments({})
+    length = apartmentsList.count()
+    return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
 
 def fetch_apartments(params):
     apartmentsList = mongo.db.apartments.find(params)
