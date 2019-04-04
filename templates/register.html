@@ -13,7 +13,32 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="signup-form">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="padding: 0px; background-color: black;
+    /*Opacity start*/
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    filter: alpha(opacity=80);
+    moz-opacity: 0.4;
+    khtml-opacity: 0.4;
+    opacity: 0.6;
+    /*Opacity end*/
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 9%;
+    padding: 0;
+    margin: 0;" id= "header">
+      <div class="container-fluid" style="margin: 0px; padding-left: 0px;" id="header-content">
+       <a class="navbar-brand my-auto" style="padding: 0px; " href="#" >
+          <img src="{{url_for('static', filename='images/Logosignin.png')}}"  style="height: 100%; padding: 4%" />
+        </a>
+
+
+      </div>
+    </nav>
+<div class="container mx-auto" style="margin-top: 20px">
+<div class="signup-form" style="margin-top: 9%; ">
     <form action="{{ url_for('register') }}" method="post">
 		<h2>Register</h2>
 		<p class="hint-text">Create your account</p>
@@ -21,7 +46,7 @@
 			<div class="row">
 				<div class="col-xs-6"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
 				<div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
-			</div>        	
+			</div>
         </div>
         <div class="form-group">
         	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
@@ -31,7 +56,7 @@
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
-        </div>        
+        </div>
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 		</div>
@@ -41,6 +66,22 @@
     </form>
 	<div class="text-center">Already have an account? <a href="login.html">Sign in</a></div>
 </div>
-
+</div>
+<div class= "footer" style="text-align: center;
+	color: white;
+	width: 100%;
+	padding: 0.541254125%; /* 8.2px (of padding in content)/ 1515px (of screen width) */
+	background-color: black;
+	font-size: 0.9em;
+    bottom: 0;
+position: fixed;
+">
+	  <p id="contactus" style="margin: 0;
+		padding: 0;
+		font-weight: bold;"> Contact Us &nbsp;</p>
+	  <p id="copyright" style="margin: 0;
+		padding: 0;
+		color: darkgray;">© Developed by Team 02 </p>
+</div>
 </body>
 </html>

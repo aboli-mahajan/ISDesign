@@ -1,65 +1,120 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="container">
-        <ul class="nav nav-pills" style="margin-right: 0px; list-style-type: none;">
-            <li class="active" style="margin: 10px;">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li style="margin: 10px;">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li style="margin: 10px;">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li style="margin: 10px;">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-        </ul>
-    </div>
+<div class="container-fluid">
+    <div class="row h-100">
+        <aside class="col-12 col-md-3 pr-md-0 bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light px-0">
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#sidebarResponsive" aria-controls="sidebarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fa fa-filter"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="sidebarResponsive" role="navigation">
+                    <ul class="flex-md-column navbar-nav ml-auto" style="margin-top:20px; width:100%;">
+                        <li class="nav-item" style="margin:0px; margin-bottom:20px;">
+                            <div class = "card-group-item" style="width: 100%;">
+                                <div class = "card-header my-0" style="">
+                                  <h5>City</h5>
+                                </div>
+                                <div class="card-body" style="padding-left:10px;">
+                                  <div class = "form-check">
+                                    <input class="form-check-input" name ="city" id="austin" type="radio">
+                                    <label class="form-check-label" for="austin">Austin </label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="sf" name="city" type="radio">
+                                    <label class="form-check-label" for="sf">San Francisco </label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="nyc" name="city" type="radio">
+                                    <label class="form-check-label" for="nyc">New York City</label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="miami" name="city" type="radio">
+                                    <label class="form-check-label" for="miami">Miami </label>
+                                  </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item" style="margin:0px; margin-bottom:20px;">
+                            <div class = "card-group-item" style="width: 100%;">
+                                <div class = "card-header my-0" style="">
+                                  <h5>Number of Bedrooms</h5>
+                                </div>
+                                <div class="card-body" style="padding-left:10px;">
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="onebed" type="checkbox">
+                                    <label class="form-check-label" for="onebed"> 1 </label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="twobed" type="checkbox">
+                                    <label class="form-check-label" for="twobed"> 2 </label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="threebed" type="checkbox">
+                                    <label class="form-check-label" for="threebed"> 3 </label>
+                                  </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item" style="margin:0px; margin-bottom:20px;">
+                            <div class = "card-group-item" style="width: 100%;">
+                                <div class = "card-header my-0" style="">
+                                  <h5>Price</h5>
+                                </div>
+                                <div class="card-body" style="padding-left:10px;" >
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="firstRange" type="checkbox">
+                                    <label class="form-check-label" for="firstRange"> $500 - $800 </label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="secondRange" type="checkbox">
+                                    <label class="form-check-label" for="secondRange"> $800 - $1000 </label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="thirdRange" type="checkbox">
+                                    <label class="form-check-label" for="thirdRange"> $1000 - $1200 </label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="fourthRange" type="checkbox">
+                                    <label class="form-check-label" for="fourthRange"> $1200 - $1500 </label>
+                                  </div>
+                                  <div class = "form-check">
+                                    <input class="form-check-input" id="fifthRange" type="checkbox">
+                                    <label class="form-check-label" for="fifthRange"> $1500 - $1800 </label>
+                                  </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item" style="margin:0px; margin-bottom:20px;">
+                            <div class = "card-group-item" style="width: 100%;">
+                                <div class = "card-header my-0" style="">
+                                  <h5>Furnishing</h5>
+                                </div>
+                                <div class="card-body" style="padding-left:10px;">
+                                <div class = "form-check">
+                                  <label class="form-check-label" for="furnished"> Furnished </label>
+                                  <input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
+                                </div>
+                              </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-    <br>
-    <br>
-
-    <div class="container">
-      {%for i in range(0, length)%}
-        <div class="row card-deck">
-          <div class="col-md-8 col-sm-6 d-flex align-items-stretch">
-            <div class="card text-left" style="margin: 5px;">
-              <img src="{{url_for('file', filename=apartments[i].image_name )}}" class="card-img-left" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
-              <div class="card-body" style="margin:0px;">
-                <p class="card-text">{{ apartments[i].title }}</p>
-              </div>
+        </aside>
+                <main class="col bg-faded py-1">
+            {%for i in range(0, length)%}
+            <div class="card flex-row flex-wrap d-flex align-items-stretch" style="margin: 20px 10px 10px 10px;">
+                <div class="card-header" style="margin-left: 15px; margin-right: 15px;">
+                    <img src="{{url_for('file', filename=apartmentsList[i].image_name )}}" alt="Modern Apartment near Austin" style="object-fit: cover; width: 30vw; height: 30vh;">
+                </div>
+                <div class="card-body px-2" style="width:50%;">
+                    <h4 class="card-title">{{ apartmentsList[i].title }}</h4>
+                    <p class="card-text">A {{ apartmentsList[i].bedrooms }} bedroom apartment in the the city of {{ apartmentsList[i].city }}. Approximate price range is between {{ apartmentsList[i].price_range }}</p>
+                </div>
             </div>
-          </div>
-        </div>
-      {%endfor%}
+          {%endfor%}
+        </main>
     </div>
+</div>
 {% endblock content %}

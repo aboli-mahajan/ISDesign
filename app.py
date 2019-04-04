@@ -24,11 +24,11 @@ def index():
 
 @app.route('/about_us')
 def aboutus():
-    return  render_template('AboutUs.html')
+    return  render_template('aboutus.html')
 
 @app.route('/signup')
 def signup():
-    return render_template('register.html')
+    return render_template('signup.html')
 
 @app.route('/login', methods=['POST','GET'])
 def login():
@@ -92,9 +92,9 @@ def addapartments():
 @app.route('/apartments')
 def apartments():
     # Does not work
-    AustinApartments = fetch_apartments({'city':'Austin'})
-    length = AustinApartments.count()
-    return render_template('apartments.html', AustinApartments=AustinApartments, length=length)
+    apartmentsList = fetch_apartments({})
+    length = apartmentsList.count()
+    return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
 
 def fetch_apartments(params):
     apartmentsList = mongo.db.apartments.find(params)
