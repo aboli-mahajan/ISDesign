@@ -24,11 +24,11 @@ def index():
 
 @app.route('/about_us')
 def aboutus():
-    return  render_template('AboutUs.html')
+    return  render_template('aboutus.html')
 
 @app.route('/signup')
 def signup():
-    return render_template('register.html')
+    return render_template('signup.html')
 
 @app.route('/login', methods=['POST','GET'])
 def login():
