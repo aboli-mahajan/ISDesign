@@ -15,7 +15,9 @@ def generateKey():
     return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
 
 @app.route('/')
+@app.route('/index')
 def index():
+
     AustinApartments = fetch_apartments({'city': 'Austin'})
     MiamiApartments = fetch_apartments({'city': 'Miami'})
     NycApartments = fetch_apartments({'city': 'New York'})
@@ -39,7 +41,8 @@ def login():
         if login_user:
             if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
                 session['email'] = request.form['username']
-                
+                session['first_name'] = login_user['first_name']
+
                 return redirect(url_for('index'))
         return 'invalid user'
 
@@ -54,8 +57,10 @@ def register():
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'email': request.form['email'], 'password': hashpass})
+            users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name']})
             session['email'] = request.form['email']
+            session['first_name'] = request.form['first_name']
+
             return redirect(url_for('index'))
 
         return 'That email already exists!'
@@ -89,6 +94,12 @@ def addapartments():
     if request.method == 'GET':
         return render_template('add_apartments.html')
     return render_template('index.html')
+
+@app.route("/logout")
+def logout():
+    if session:
+        session.clear()
+        return render_template('login.html')
 
 @app.route('/apartments')
 def apartments():
