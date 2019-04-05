@@ -1,121 +1,119 @@
 {% extends "layout.html" %}
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/AboutUs.css')}}"/>
 
-		<!--HEADER-->
     <div id="page" xmlns:background="http://www.w3.org/1999/xhtml">
-			<div class="page_container">
 
+        <div class="container-fluid">
+            <div class = "parallax" >
 
-	<div class="container-fluid">
-		<div class = "parallax" >
-
-<!-- Navigation menu for about us -->
-<section class="content-section text-center" id="gettoknowus">
-    <div class="container">
-      <div class="content-section-heading">
-  	  	<h2 class="mb-4">Get to know us!</h2>
-      </div>
-	  <div class = "team" style="margin: auto;  ">
-		<a href = "#whatwedo" class="button">What We Do</a>
-	  </div>
-	  <div class = "team" style="float:inherit; ">
-		<a href = "#history" class="button">Our History</a>
-	  </div>
-	  <div class = "team" style="float:inherit; ">
-		<a href = "#meettheteam" class="button">Meet The Team</a>
-	  </div>
-	</div>
-</section>
-
-<!--What We Do section -->
-<section class="content-section  text-center" id="whatwedo">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5">
-          <span class="service-icon mx-auto mb-3">
-            <img src="static/Images/Whatwedo.PNG" height="90%" width="100%">
-          </span>
-		</div>
-		<div class="col-md-7">
-			<h2 class="mb-3">What We Do</h2>
-          	<p class="text-faded mb-0">HomeMe is a unique product catering to the needs of college graduates, young professionals and couples who are on the lookout for housing options. People tend to move frequently due to the global nature of their jobs and the long process of looking for apartments and roommates can get frustrating. HomeMe provides you with the option of looking for apartments as well as contacting others who have shown an interest in the same properties. By incorporating this facility, we make apartment searching a pleasure. Our web application will not only allow you to specify criteria that matter to you while looking for apartments but will also allow you to connect to people whose preferences match yours. At HomeMe, we are sure to make everyone feel like ‘Home is truly where the heart is’.</p>
+    <!-- Navigation menu for about us -->
+    <section class="content-section text-center" id="gettoknowus">
+        <div class="container">
+          <div class="content-section-heading" id="section_one">
+            <h2 class="mb-4">Get to know us!</h2>
+          </div>
+          <div class = "team" style="margin: auto"; id="whatwedo_button">
+            <a href = "#whatwedo" class="button">What We Do</a>
+          </div>
+          <div class = "team" style="float:inherit; " id="history_button">
+            <a href = "#history" class="button">Our History</a>
+          </div>
+          <div class = "team" style="float:inherit; " id="meettheteam_button">
+            <a href = "#meettheteam" class="button">Meet The Team</a>
+          </div>
         </div>
-     </div>
-	</div>
-</section>
+    </section>
 
-<!-- Our History section-->
-<section class="content-section  text-center" id="history">
-    <div class="container">
-       <div class="row">
-		  <div class="col-md-7">
-		  <h2 class="mb-3"> Our History</h2>
-          <p class="text-faded mb-0">Founded in 2011, HomeMe began with two computer screens in a newly rented room. Two new Texas A&M University college graduates Alexis and Bruce, fresh from the struggle of looking for a place that checked all their boxes, decided to make it easier for everyone else out there. What started as a 2- person initiative has now grown into a 2000-people strong team working together to make apartment and roommate search a fun-filled smooth experience. Headquartered in Austin, TX, HomeMe now has offices in San Francisco and Miami, with plans of expansion into 2 other cities. In In 2015, a “Find Roommate” feature was introduced to provide a complete apartment-search experience.</p>
-       </div>
-	   <div class="col-md-5">
-          <span class="service-icon mx-auto mb-3">
-            <img src="static/Images/Journey.PNG" height="90%" width="100%">
-          </span>
-	   </div>
-	   </div>
-	</div>
-</section>
-
-<!--MEET the team -->
-<section class="content-section  text-center" id="meettheteam">
-    <div class="container">
-      <div class="content-section-heading">
-      	<h2 class="mb-3">Meet the Team</h2>
-      </div>
-      <div class="row">
-
-		<div class="col-lg-3 col-md-6 col-xs-12 mb-5 mb-lg-0">
-          <span>
-          	<img class = "img-team" src= "static/Images/Tejasi.jpeg" style ="border-radius: 50%; height: 60%; width:60%;"/>
-          </span>
-          <h4>
-            <strong>Tejasi</strong>
-          </h4>
-          <p class="text-faded mb-0">Fancy title, does nothing. Laughs. </p>
+    <!--What We Do section -->
+    <section class="content-section  text-center" id="whatwedo">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <span class="service-icon mx-auto mb-3">
+                <img src="static/Images/Whatwedo.PNG" height="90%" width="100%">
+              </span>
+            </div>
+            <div class="col-md-7">
+                <h2 class="mb-3">What We Do</h2>
+                <p class="text-faded mb-0">HomeMe is a unique product catering to the needs of college graduates, young professionals and couples who are on the lookout for housing options. People tend to move frequently due to the global nature of their jobs and the long process of looking for apartments and roommates can get frustrating. HomeMe provides you with the option of looking for apartments as well as contacting others who have shown an interest in the same properties. By incorporating this facility, we make apartment searching a pleasure. Our web application will not only allow you to specify criteria that matter to you while looking for apartments but will also allow you to connect to people whose preferences match yours. At HomeMe, we are sure to make everyone feel like ‘Home is truly where the heart is’.</p>
+            </div>
+         </div>
         </div>
+    </section>
 
-        <div class="col-lg-3 col-md-6 col-xs-12 mb-5 mb-lg-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <img class = "img-team" src = "static/images//Aboli.jpeg" style ="border-radius: 50%; height: 60%; width:60%;"/>
-          </span>
-          <h4>
-            <strong>Aboli</strong>
-          </h4>
-          <p class="text-faded mb-0"> Designation </p>
+    <!-- Our History section-->
+    <section class="content-section  text-center" id="history">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-7">
+              <h2 class="mb-3"> Our History</h2>
+              <p class="text-faded mb-0">Founded in 2011, HomeMe began with two computer screens in a newly rented room. Two new Texas A&M University college graduates Alexis and Bruce, fresh from the struggle of looking for a place that checked all their boxes, decided to make it easier for everyone else out there. What started as a 2- person initiative has now grown into a 2000-people strong team working together to make apartment and roommate search a fun-filled smooth experience. Headquartered in Austin, TX, HomeMe now has offices in San Francisco and Miami, with plans of expansion into 2 other cities. In In 2015, a “Find Roommate” feature was introduced to provide a complete apartment-search experience.</p>
+           </div>
+           <div class="col-md-5">
+              <span class="service-icon mx-auto mb-3">
+                <img src="static/Images/Journey.PNG" height="90%" width="100%">
+              </span>
+           </div>
+           </div>
         </div>
+    </section>
 
-        <div class="col-lg-3 col-md-6 mb-5 col-xs-12 mb-md-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <img class = "img-team" src= "static/images//Neelesh.jpeg" style ="border-radius: 50%; height: 60%; width:60%;"/>
-          </span>
-          <h4>
-            <strong>Neelesh</strong>
-          </h4>
-			<p class="text-faded mb-0">Underpaid Intern </p>
-        </div>
+    <!--MEET the team -->
+    <section class="content-section  text-center" id="meettheteam">
+        <div class="container">
+          <div class="content-section-heading">
+            <h2 class="mb-3">Meet the Team</h2>
+          </div>
+          <div class="row">
 
-        <div class="col-lg-3 col-md-6">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-             <img class = "img-team" src="static/images/Shikha.jpeg" style ="border-radius: 50%; height: 60%; width:60%;"/>
-          </span>
-          <h4>
-            <strong>Shikha</strong>
-          </h4>
-          <p class="text-faded mb-0">I mustache you a question...</p>
+            <div class="col-lg-3 col-md-6 col-xs-12 mb-5 mb-lg-0">
+              <span>
+                <img class = "img-team" src= "static/Images/Tejasi.jpeg" style ="border-radius: 50%; height: 60%; width:60%;"/>
+              </span>
+              <h4>
+                <strong>Tejasi</strong>
+              </h4>
+              <p class="text-faded mb-0">Fancy title, does nothing. Laughs. </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-xs-12 mb-5 mb-lg-0">
+              <span class="service-icon rounded-circle mx-auto mb-3">
+                <img class = "img-team" src = "static/images//Aboli.jpeg" style ="border-radius: 50%; height: 60%; width:60%;"/>
+              </span>
+              <h4>
+                <strong>Aboli</strong>
+              </h4>
+              <p class="text-faded mb-0"> Designation </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-5 col-xs-12 mb-md-0">
+              <span class="service-icon rounded-circle mx-auto mb-3">
+                <img class = "img-team" src= "static/images//Neelesh.jpeg" style ="border-radius: 50%; height: 60%; width:60%;"/>
+              </span>
+              <h4>
+                <strong>Neelesh</strong>
+              </h4>
+                <p class="text-faded mb-0">Underpaid Intern </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <span class="service-icon rounded-circle mx-auto mb-3">
+                 <img class = "img-team" src="static/images/Shikha.jpeg" style ="border-radius: 50%; height: 60%; width:60%;"/>
+              </span>
+              <h4>
+                <strong>Shikha</strong>
+              </h4>
+              <p class="text-faded mb-0">I mustache you a question...</p>
+            </div>
+          </div>
         </div>
-      </div>
+    </section>
+
     </div>
-</section>
+    </div>
+    </div>
 
-</div>
-</div>
-</div>
-</div>
 
 
 {% endblock content %}

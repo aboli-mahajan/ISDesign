@@ -106,11 +106,11 @@
             {%for i in range(0, length)%}
             <div class="card flex-row flex-wrap d-flex align-items-stretch" style="margin: 20px 10px 10px 10px;">
                 <div class="card-header" style="margin-left: 15px; margin-right: 15px;">
-                    <img src="{{url_for('file', filename=apartmentsList[i].image_name )}}" alt="Modern Apartment near Austin" style="object-fit: cover; width: 30vw; height: 30vh;">
+                    <img class="apartmentsImg" src="{{url_for('file', filename=apartmentsList[i].image_name )}}" alt="Modern Apartment near Austin" style="object-fit: cover; height: 30vh;">
                 </div>
                 <div class="card-body px-2" style="width:50%;">
                     <h4 class="card-title">{{ apartmentsList[i].title }}</h4>
-                    <p class="card-text">A {{ apartmentsList[i].bedrooms }} bedroom apartment in the the city of {{ apartmentsList[i].city }}. Approximate price range is between {{ apartmentsList[i].price_range }}</p>
+                    <p class="card-text text-left">A {{ apartmentsList[i].bedrooms }} bedroom apartment in the the city of {{ apartmentsList[i].city }}. Approximate price range is between {{ apartmentsList[i].price_range }}</p>
                 </div>
             </div>
           {%endfor%}
