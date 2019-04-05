@@ -1,1 +1,1 @@
-web: gunicorn app:ISDesign
+web: gunicorn app:app
