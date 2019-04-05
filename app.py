@@ -24,7 +24,7 @@ def index():
     SfApartments = fetch_apartments({'city': 'San Francisco'})
     return render_template('index.html', AustinApartments=AustinApartments, MiamiApartments=MiamiApartments, NycApartments=NycApartments, SfApartments=SfApartments)
 
-@app.route('/about_us')
+@app.route('/aboutus')
 def aboutus():
     return  render_template('aboutus.html')
 
@@ -103,7 +103,6 @@ def logout():
 
 @app.route('/apartments')
 def apartments():
-    # Does not work
     apartmentsList = fetch_apartments({})
     length = apartmentsList.count()
     return render_template('apartments.html', apartmentsList=apartmentsList, length=length)

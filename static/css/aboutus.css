@@ -5,12 +5,12 @@
 
 @font-face {
     font-family: "Crimson";
-    src: url('CrimsonText-Regular.ttf') format("truetype");
+    src: url('../fonts/CrimsonText-Regular.ttf') format("truetype");
 }
 
 @font-face {
     font-family: "Roboto";
-    src: url('Roboto-Regular.ttf') format("truetype");
+    src: url('../fonts/Roboto-Regular.ttf') format("truetype");
 }
 
 body {
