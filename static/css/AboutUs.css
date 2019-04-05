@@ -14,29 +14,12 @@
 }
 
 body {
-
-	background: url("static/images/HomeBackground.jpg") no-repeat fixed;
+	background: url('../images/HomeBackground.jpg') no-repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-
-
-#page {
-	height: 900px; /* fixing page height */
-	font-size: 16px;
-}
-
-.page_container {
-	font-size: medium;
-}
-
-.home{
-
-	background-size: cover;
-	background: no-repeat;
-
+	background-position: center;
 }
 
 .content-section {
@@ -71,21 +54,6 @@ body {
 	font-size: 0.4rem;
 }
 
-.parallax {
-
-    height: 730px;
-	background-image: url("HomeBackground.jpg");
-	/* Create the parallax scrolling effect */
-	background-attachment: fixed;
-  	background-position: center;
-  	background-repeat: no-repeat;
-  	background-size: cover;
-}
-
-.desc_text {
-	float: right;
-}
-
 .img-team {
 	opacity: 2;
 }
@@ -112,33 +80,14 @@ body {
 	font-size: 1.5em;
 }
 
-#icon_set .column {
-	width: 25%;
-	padding: 4.620462046%; /* 35px (of padding in content)/ 757.5px (of column width) */;
-}
-
-#icon_set p {
-	font-weight: bold;
-}
-
-#home {
-	float: left;
-}
 #card_template {
 	 z-index: 5;
-}
-#roommate {
-	float: right;
-}
-
-#city {
-	float: left;
 }
 
 p {
 	padding: 0;
 	text-align: center;
-	font-weight: 440;
+	font-weight: 400;
 }
 
 #meettheteam img {
@@ -149,6 +98,26 @@ p {
 
 h4 {
 	margin-top: 5%;
+}
+
+.footer {
+	text-align: center;
+	color: white;
+	width: 100%;
+	padding: 0.541254125%; /* 8.2px (of padding in content)/ 1515px (of screen width) */
+	background-color: black;
+	font-size: 0.9em;
+    bottom: 0;
+
+}
+
+a:hover {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.button:hover {
+	transform: scale(1.1) perspective(1px);
 }
 
 @media (min-width: 576px) {
