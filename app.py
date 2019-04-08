@@ -58,11 +58,12 @@ def register():
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name']})
-            session['email'] = request.form['email']
-            session['first_name'] = request.form['first_name']
-
-            return redirect(url_for('index'))
-
+            # session['email'] = request.form['email']
+            # session['first_name'] = request.form['first_name']
+            first_name = request.form['first_name'];
+            email = request.form['email']
+            # return redirect(url_for('index'))
+            return render_template('index',first_name=first_name, email=email)
         return 'That email already exists!'
 
     return render_template('register.html')

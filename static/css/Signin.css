@@ -6,6 +6,7 @@
 body {
   background: #A05071;
   background: linear-gradient(to right, #921e4e, #A05071);
+  font-family: Roboto, sans-serif;
 }
 
 .card-signin {
