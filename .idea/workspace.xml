@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="185bc4ff-6947-46ce-8a19-feb065ddeb8e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="979">
-              <caret line="101" column="38" lean-forward="true" selection-start-line="101" selection-start-column="38" selection-end-line="101" selection-end-column="38" />
+            <state relative-caret-position="428">
+              <caret line="61" column="62" selection-start-line="61" selection-start-column="62" selection-end-line="61" selection-end-column="62" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -41,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="328">
-              <caret line="48" column="111" lean-forward="true" selection-start-line="48" selection-start-column="111" selection-end-line="48" selection-end-column="111" />
+              <caret line="58" column="111" lean-forward="true" selection-start-line="58" selection-start-column="111" selection-end-line="58" selection-end-column="111" />
             </state>
           </provider>
         </entry>
@@ -58,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
+            <state relative-caret-position="425">
+              <caret line="52" column="68" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -86,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/static/css/Signin.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -164,9 +163,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="300" />
-    <option name="y" value="20" />
-    <option name="width" value="1400" />
-    <option name="height" value="1035" />
+    <option name="y" value="30" />
+    <option name="width" value="1398" />
+    <option name="height" value="1006" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -270,15 +269,15 @@
       <workItem from="1554216598295" duration="9467000" />
       <workItem from="1554328707598" duration="23417000" />
       <workItem from="1554408125653" duration="34861000" />
-      <workItem from="1554665820008" duration="7156000" />
+      <workItem from="1554665820008" duration="8053000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144719000" />
+    <option name="totallyTimeSpent" value="145616000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="80" y="2" width="1841" height="1079" extended-state="6" />
+    <frame x="81" y="-5" width="1839" height="1085" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16452873" />
@@ -308,7 +307,7 @@
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ISDesign$ISDesign.coverage" NAME="ISDesign Coverage Results" MODIFIED="1554736488595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ISDesign$ISDesign.coverage" NAME="ISDesign Coverage Results" MODIFIED="1554737865635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/bin/pip">
@@ -415,7 +414,7 @@
     <entry file="file://$PROJECT_DIR$/static/css/Signin.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -456,22 +455,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
+        <state relative-caret-position="425">
+          <caret line="52" column="68" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
-          <caret line="48" column="111" lean-forward="true" selection-start-line="48" selection-start-column="111" selection-end-line="48" selection-end-column="111" />
+          <caret line="58" column="111" lean-forward="true" selection-start-line="58" selection-start-column="111" selection-end-line="58" selection-end-column="111" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="979">
-          <caret line="101" column="38" lean-forward="true" selection-start-line="101" selection-start-column="38" selection-end-line="101" selection-end-column="38" />
+        <state relative-caret-position="428">
+          <caret line="61" column="62" selection-start-line="61" selection-start-column="62" selection-end-line="61" selection-end-column="62" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
