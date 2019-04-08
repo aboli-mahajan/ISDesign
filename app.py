@@ -100,7 +100,7 @@ def addapartments():
 def logout():
     if session:
         session.clear()
-        return render_template('login.html')
+        return redirect(url_for('login'))
 
 @app.route('/apartments')
 def apartments():
