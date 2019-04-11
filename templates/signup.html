@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registration Form</title>
+<link rel="stylesheet" href="static/css/register.css" type="text/css" >
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark" style="
+ background-color: black;
+    /*Opacity start*/
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    filter: alpha(opacity=80);
+    moz-opacity: 0.4;
+    khtml-opacity: 0.4;
+    opacity: 0.6;
+    /*Opacity end*/
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    padding: 0;
+    margin: 0px;" id= "header">
+      <div class="container-fluid" style="padding-top: 0px; " id="header-content">
+       <a class="navbar-brand" style="float: none; padding: 0px;" href="#" >
+          <img src="{{url_for('static', filename='images/Logosignin.png')}}" style="height: 50px; margin: 0px auto; "/>
+        </a>
+
+      </div>
+    </nav>
+<div class="signup-form" style="margin-top: 8%; ">
+    <form action="{{ url_for('register') }}" method="post">
+		<h2>Register</h2>
+		<p class="hint-text">Create your account</p>
+        <div class="form-group">
+			<div class="row">
+				<div class="col-xs-6"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
+				<div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
+			</div>
+        </div>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+        </div>
+        <div class="form-group">
+			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+		</div>
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+        </div>
+    </form>
+	<div class="text-center">Already have an account? <a href="login.html">Sign in</a></div>
+</div>
+<div class= "footer" style="text-align: center;
+	color: white;
+	width: 100%;
+	padding: 0.541254125%; /* 8.2px (of padding in content)/ 1515px (of screen width) */
+	background-color: black;
+	font-size: 0.9em;
+    bottom: 0;
+position: fixed;
+">
+	  <p id="contactus" style="margin: 0;
+		padding: 0;
+		font-weight: bold;"> Contact Us &nbsp;</p>
+	  <p id="copyright" style="margin: 0;
+		padding: 0;
+		color: darkgray;">© Developed by Team 02 </p>
+</div>
+</body>
+</html>
