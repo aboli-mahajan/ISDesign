@@ -44,10 +44,9 @@ def login():
                 session['first_name'] = login_user['first_name']
 
                 return redirect(url_for('index'))
-        return 'invalid user'
+        return render_template('notfound.html')
 
     return render_template('login.html')
-
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -60,9 +59,7 @@ def register():
             users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name']})
             session['email'] = request.form['email']
             session['first_name'] = request.form['first_name']
-
             return redirect(url_for('index'))
-
         return 'That email already exists!'
 
     return render_template('register.html')
@@ -99,7 +96,7 @@ def addapartments():
 def logout():
     if session:
         session.clear()
-        return render_template('login.html')
+        return redirect(url_for('login'))
 
 @app.route('/apartments')
 def apartments():
