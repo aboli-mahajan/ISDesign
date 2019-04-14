@@ -32,6 +32,10 @@ def aboutus():
 def signup():
     return render_template('signup.html')
 
+@app.route('/userprofile')
+def userprofile():
+    return render_template('userprofile.html')
+
 @app.route('/login', methods=['POST','GET'])
 def login():
     if request.method == 'POST':
