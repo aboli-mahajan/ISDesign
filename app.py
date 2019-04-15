@@ -80,7 +80,7 @@ def addapartments():
         request_params['title'] = request.form['title']
         request_params['bedrooms'] = int(request.form['bedrooms'])
         request_params['price_range'] = request.form['price_range']
-        if 'furnished' in request.form:
+        if request.form['furnished'] == 'yes':
             request_params['furnished'] = True
         else:
             request_params['furnished'] = False
@@ -92,8 +92,10 @@ def addapartments():
             request_params['image_name'] = photo.filename
             mongo.db.apartments.insert(request_params)
 
-    if request.method == 'GET':
-        return render_template('add_apartments.html')
+        apartmentsList = fetch_apartments({})
+        length = apartmentsList.count()
+        return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
+
     return render_template('index.html')
 
 @app.route("/logout")
@@ -102,7 +104,7 @@ def logout():
         session.clear()
         return redirect(url_for('login'))
 
-@app.route('/apartments')
+@app.route('/apartments', methods=['GET', 'POST'])
 def apartments():
     apartmentsList = fetch_apartments({})
     length = apartmentsList.count()

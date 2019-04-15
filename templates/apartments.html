@@ -5,104 +5,128 @@
         <aside class="col-12 col-md-3 pr-md-0 bg-light">
             <nav class="navbar navbar-expand-lg navbar-light px-0">
                 <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#sidebarResponsive" aria-controls="sidebarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                  <i class="fa fa-filter"></i>
+                  <i class="fa fa-filter ml-auto"></i>
                 </button>
+                <form id="apartmentsFilter" action="/apartments" method="POST" style="margin:0px; width:100%;">
                 <div class="collapse navbar-collapse" id="sidebarResponsive" role="navigation">
                     <ul class="flex-md-column navbar-nav ml-auto" style="margin-top:20px; width:100%;">
                         <li class="nav-item" style="margin:0px; margin-bottom:20px;">
                             <div class = "card-group-item" style="width: 100%;">
+                                <fieldset class="form-group">
                                 <div class = "card-header my-0" style="">
                                   <h5>City</h5>
                                 </div>
                                 <div class="card-body" style="padding-left:10px;">
                                   <div class = "form-check">
-                                    <input class="form-check-input" name ="city" id="austin" type="radio">
-                                    <label class="form-check-label" for="austin">Austin </label>
+                                    <input class="form-check-input" name ="city" id="austin" value="Austin" type="radio">
+                                    <label class="form-check-label" for="austin">Austin</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="sf" name="city" type="radio">
-                                    <label class="form-check-label" for="sf">San Francisco </label>
+                                    <input class="form-check-input" value="San Francisco" id="sf" name="city" type="radio">
+                                    <label class="form-check-label" for="sf">San Francisco</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="nyc" name="city" type="radio">
+                                    <input class="form-check-input" value="New York City" id="nyc" name="city" type="radio">
                                     <label class="form-check-label" for="nyc">New York City</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="miami" name="city" type="radio">
-                                    <label class="form-check-label" for="miami">Miami </label>
+                                    <input class="form-check-input" value="Miami" id="miami" name="city" type="radio">
+                                    <label class="form-check-label" for="miami">Miami</label>
                                   </div>
                                 </div>
+                                </fieldset>
                             </div>
                         </li>
+
                         <li class="nav-item" style="margin:0px; margin-bottom:20px;">
                             <div class = "card-group-item" style="width: 100%;">
+                                <fieldset class="form-group">
                                 <div class = "card-header my-0" style="">
                                   <h5>Number of Bedrooms</h5>
                                 </div>
                                 <div class="card-body" style="padding-left:10px;">
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="onebed" type="checkbox">
-                                    <label class="form-check-label" for="onebed"> 1 </label>
+                                    <input class="form-check-input" name="bedrooms" id="1" value="1" type="checkbox">
+                                    <label class="form-check-label" for="onebed">1</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="twobed" type="checkbox">
-                                    <label class="form-check-label" for="twobed"> 2 </label>
+                                    <input class="form-check-input" name="bedrooms" id="2" value="2" type="checkbox">
+                                    <label class="form-check-label" for="twobed">2</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="threebed" type="checkbox">
-                                    <label class="form-check-label" for="threebed"> 3 </label>
+                                    <input class="form-check-input" name="bedrooms" id="3" value="3" type="checkbox">
+                                    <label class="form-check-label" for="threebed">3</label>
                                   </div>
                                 </div>
+                                </fieldset>
                             </div>
                         </li>
+
                         <li class="nav-item" style="margin:0px; margin-bottom:20px;">
                             <div class = "card-group-item" style="width: 100%;">
+                                <fieldset class="form-group">
                                 <div class = "card-header my-0" style="">
                                   <h5>Price</h5>
                                 </div>
                                 <div class="card-body" style="padding-left:10px;" >
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="firstRange" type="checkbox">
-                                    <label class="form-check-label" for="firstRange"> $500 - $800 </label>
+                                    <input class="form-check-input" name="price" id="firstRange" value="firstRange" type="checkbox">
+                                    <label class="form-check-label" for="firstRange">$500 - $800</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="secondRange" type="checkbox">
-                                    <label class="form-check-label" for="secondRange"> $800 - $1000 </label>
+                                    <input class="form-check-input" name="price" id="secondRange" value="secondRange" type="checkbox">
+                                    <label class="form-check-label" for="secondRange">$800 - $1000</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="thirdRange" type="checkbox">
-                                    <label class="form-check-label" for="thirdRange"> $1000 - $1200 </label>
+                                    <input class="form-check-input" name="price" id="thirdRange" value="thirdRange" type="checkbox">
+                                    <label class="form-check-label" for="thirdRange">$1000 - $1200</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="fourthRange" type="checkbox">
-                                    <label class="form-check-label" for="fourthRange"> $1200 - $1500 </label>
+                                    <input class="form-check-input" name="price" id="fourthRange" value="fourthRange" type="checkbox">
+                                    <label class="form-check-label" for="fourthRange">$1200 - $1500</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" id="fifthRange" type="checkbox">
-                                    <label class="form-check-label" for="fifthRange"> $1500 - $1800 </label>
+                                    <input class="form-check-input" name="price" id="fifthRange" value="fifthRange" type="checkbox">
+                                    <label class="form-check-label" for="fifthRange">$1500 - $1800</label>
                                   </div>
                                 </div>
+                                </fieldset>
                             </div>
                         </li>
+
                         <li class="nav-item" style="margin:0px; margin-bottom:20px;">
                             <div class = "card-group-item" style="width: 100%;">
                                 <div class = "card-header my-0" style="">
                                   <h5>Furnishing</h5>
                                 </div>
                                 <div class="card-body" style="padding-left:10px;">
-                                <div class = "form-check">
-                                  <label class="form-check-label" for="furnished"> Furnished </label>
-                                  <input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
+                                  <div class = "form-check">
+                                    <input type="checkbox" class="form-check-input" checked data-toggle="toggle" data-onstyle="success" name="furnished" id="furnished" value="1">
+                                    <label class="form-check-label" for="furnished">Furnished</label>
+                                  </div>
                                 </div>
-                              </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item" style="margin:0px; margin-bottom:20px;">
+                            <div class = "card-group-item" style="width: 100%;">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Apply</button>
                             </div>
                         </li>
                     </ul>
                 </div>
+
             </nav>
+            </form>
 
         </aside>
-                <main class="col bg-faded py-1">
+        <main class="col bg-faded py-1">
+            <div class="d-flex">
+                <button type="button" class="btn btn-light ml-auto" data-toggle="modal" data-target="#addApartmentModal" style="background-color:#cacaca;">
+                    <i class="fa fa-plus"></i>
+                    Add Apartment
+                </button>
+            </div>
             {%for i in range(0, length)%}
             <div class="card flex-row flex-wrap d-flex align-items-stretch" style="margin: 20px 10px 10px 10px;">
                 <div class="card-header" style="margin-left: 15px; margin-right: 15px;">
@@ -115,6 +139,75 @@
             </div>
           {%endfor%}
         </main>
+
+        <div class="modal fade" id="addApartmentModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header mx-0">
+                <h5 class="modal-title mx-0">Add Apartment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body mx-0">
+                <form method="POST" action="/addapartments" enctype="multipart/form-data" id="apartmentForm">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" name="city" id="city" class="form-control" placeholder="City">
+                    </div>
+                    <fieldset class="form-group">
+                        <label for="furnished">Furnished</label>
+                        <div>
+                        <div class = "form-check form-check-inline">
+                          <input class="form-check-input" name="furnished" id="yes" value="yes" type="radio">
+                          <label class="form-check-label" for="yes">Yes</label>
+                        </div>
+                        <div class = "form-check form-check-inline">
+                          <input class="form-check-input" name="furnished" id="no" value="no" type="radio">
+                          <label class="form-check-label" for="no">No</label>
+                        </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="bedrooms">Number of Bedrooms</label>
+                        <select id="bedrooms" name="bedrooms" class="form-control">
+                            <option selected>Choose option</option>
+                            <option value="1">1 bedroom</option>
+                            <option value="2">2 bedrooms</option>
+                            <option value="3">3 bedrooms</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price Range</label>
+                        <select id="price" name="price_range" class="form-control">
+                            <option selected>Choose option</option>
+                            <option value="$500 - $800">$500 - $800</option>
+                            <option value="$800 - $1000">$800 - $1000</option>
+                            <option value="$1000 - $1200">$1000 - $1200</option>
+                            <option value="$1200 - $1500">$1200 - $1500</option>
+                            <option value="$1500 - $1800">$1500 - $1800</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="apartmentImage">Apartment Image</label>
+                      <input type="file" name="photo" class="form-control-file" id="apartmentImage">
+                    </div>
+{#                    <div class="form-group">#}
+{#                        <button type="hidden submit" id="apartmentSubmit">Submit</button>#}
+{#                    </div>#}
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" onclick="submitApartmentForm()">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 </div>
 {% endblock content %}
