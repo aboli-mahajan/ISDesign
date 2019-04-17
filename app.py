@@ -120,7 +120,22 @@ def logout():
 
 @app.route('/apartments', methods=['GET', 'POST'])
 def apartments():
-    apartmentsList = fetch_apartments({})
+    request_params = {}
+    if request.method == 'POST':
+        request_params['city'] = str(request.form['city'])
+        bedrooms = []
+        for i in request.form.getlist('bedrooms'):
+            bedrooms.append(int(i))
+        price_range = []
+        for i in request.form.getlist('price'):
+            price_range.append(str(i))
+        request_params['bedrooms'] = {"$in": bedrooms}
+        request_params['price_range'] = {"$in": price_range}
+        if int(request.form['furnished']) == 1:
+            request_params['furnished'] = True
+        else:
+            request_params['furnished'] = False
+    apartmentsList = fetch_apartments(request_params)
     length = apartmentsList.count()
     return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
 

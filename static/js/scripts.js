@@ -32,6 +32,9 @@ $('#apartmentsFilter').submit(function(e) {
     data: formFilter.serializeArray(),
     beforeSend: function() {
       submitButton.prop('disabled','disabled')
+    },
+    success: function(response) {
+      $('#mainBody').html(response)
     }
   }).done(function(data) {
     submitButton.prop('disabled',false)
