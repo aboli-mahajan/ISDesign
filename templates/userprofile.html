@@ -7,18 +7,12 @@
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
-                                   <img class= "img-profile img-circle img-responsive center-block" id="profile-pic" src="static/images/Neelesh.jpeg">
+                                   <img class= "img-profile img-circle img-responsive center-block" src="static/images/avatar.jpeg">
                          <ul class="meta list list-unstyled">
                              <li class="name">Edit
                                 <i class="fa fa-camera upload-button"></i>
                                 <input class="file-upload" type="file" accept="image/*"/>
                               </li>
-                             <li class="name">Rebecca Sanders
-                                <!--<label class="label label-info">UX Designer</label>-->
-                            </li>
-                             <li class="name">UX Designer
-                            </li>
-
                         </ul>
 
                     </div>
@@ -35,60 +29,50 @@
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Profile</h2>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="POST">
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
                             <div class="form-group avatar">
 
 
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
-                                </div>
-                            </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name*</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
+                                    <input name="f_name" type="text" class="form-control" value="{{ user['first_name'] }}" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name*</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Sanders">
+                                    <input name="l_name" type="text" class="form-control" value="{{ user['last_name'] }}" required="required">
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Contact Info</h3>
                             <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email*</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="email" class="form-control" value="Rebecca@website.com">
-
+                                    <input name="email_id" type="email" class="form-control" value="{{ user['email'] }}" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Location</label>
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Location*</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
-
+                                    <input name="location" type="text" class="form-control" value="{{ user['location'] }}" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Age</label>
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Sex*</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Sex</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
+                                    <label class="radio">Male
+                                             <input name="male" type="radio" />
+                                        </label>
+                                        <label class="radio">Female
+                                          <input name="female" type="radio"/>
+                                        </label>
 
                                 </div>
                             </div>

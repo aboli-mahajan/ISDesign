@@ -32,9 +32,23 @@ def aboutus():
 def signup():
     return render_template('signup.html')
 
-@app.route('/userprofile')
+
+@app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
+    if request.method == 'POST':
+        user = mongo.db.users.find_one({'email': session['email']})
+        mongo.db.users.update_one({"email": session['email']}, {"$set": {"first_name": request.form['f_name'], "last_name": request.form['l_name'],"email": request.form['email_id'], "location": request.form['location']}})
+        current_user = mongo.db.users.find_one({'email': session['email']})
+        return render_template('userprofile.html', user=current_user)
+    if request.method == 'GET':
+        current_user = mongo.db.users.find_one({'email': session['email']})
+        return render_template('userprofile.html', user=current_user)
+
     return render_template('userprofile.html')
+
+@app.route('/bio')
+def bio():
+    return render_template('bio.html')
 
 @app.route('/login', methods=['POST','GET'])
 def login():
