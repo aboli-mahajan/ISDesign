@@ -11,8 +11,10 @@ app.config['MONGO_URI'] = 'mongodb+srv://demo:demo123@cluster0-kmntv.mongodb.net
 
 mongo = PyMongo(app)
 
+
 def generateKey():
     return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
+
 
 @app.route('/')
 @app.route('/index')
@@ -24,13 +26,16 @@ def index():
     SfApartments = fetch_apartments({'city': 'San Francisco'})
     return render_template('index.html', AustinApartments=AustinApartments, MiamiApartments=MiamiApartments, NycApartments=NycApartments, SfApartments=SfApartments)
 
+
 @app.route('/aboutus')
 def aboutus():
     return  render_template('aboutus.html')
 
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
 
 @app.route('/login', methods=['POST','GET'])
 def login():
@@ -39,7 +44,7 @@ def login():
         login_user = users.find_one({'email': request.form['username']})
 
         if login_user:
-            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']):
                 session['email'] = request.form['username']
                 session['first_name'] = login_user['first_name']
 
@@ -56,21 +61,28 @@ def register():
         existing_user = users.find_one({'email': request.form['email']})
 
         if existing_user is None:
+            request_params={}
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name']})
-            # session['email'] = request.form['email']
-            # session['first_name'] = request.form['first_name']
-            first_name = request.form['first_name'];
-            email = request.form['email']
-            # return redirect(url_for('index'))
-            return render_template('index',first_name=first_name, email=email)
+
+            session['email'] = request.form['email']
+            session['first_name'] = request.form['first_name']
+            if 'photo' in request.files:
+                photo = request.files['photo']
+                mongo.save_file(photo.filename, photo)
+                mongo.db.users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name'], 'photo': photo.filename})
+
+            mongo.db.users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name'], 'photo': 'None'})
+            return redirect(url_for('index'))
+
         return 'That email already exists!'
 
     return render_template('register.html')
 
+
 @app.route('/file/<filename>')
 def file(filename):
     return mongo.send_file(filename)
+
 
 @app.route('/addapartments', methods=['GET', 'POST'])
 def addapartments():
@@ -96,11 +108,13 @@ def addapartments():
         return render_template('add_apartments.html')
     return render_template('index.html')
 
+
 @app.route("/logout")
 def logout():
     if session:
         session.clear()
-        return render_template('login.html')
+        return redirect(url_for('login'))
+
 
 @app.route('/apartments')
 def apartments():
@@ -108,11 +122,32 @@ def apartments():
     length = apartmentsList.count()
     return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
 
+
 def fetch_apartments(params):
     apartmentsList = mongo.db.apartments.find(params)
     return apartmentsList
+
+
+@app.route('/roommates')
+def roommates():
+    roommatesList = fetch_roommates({})
+    length = roommatesList.count()
+    return render_template('roommates.html', roommatesList=roommatesList, length=length)
+
+
+def fetch_roommates(params):
+    roommatesList = mongo.db.users.find(params)
+    return roommatesList
+
+
+@app.route('/bio')
+def bio():
+    return render_template('bio.html')
+
 
 if __name__ == '__main__':
     app.run()
 
 app.secret_key = 'mysecret1'
+
+
