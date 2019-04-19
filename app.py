@@ -3,6 +3,7 @@ from flask import Flask, render_template, url_for, request, session, redirect
 import bcrypt
 import string
 import random
+from bson.json_util import dumps
 
 app = Flask(__name__)
 
@@ -29,7 +30,7 @@ def index():
 
 @app.route('/aboutus')
 def aboutus():
-    return  render_template('aboutus.html')
+    return render_template('aboutus.html')
 
 
 @app.route('/signup')
@@ -121,9 +122,21 @@ def logout():
         session.clear()
         return redirect(url_for('login'))
 
-@app.route('/apartments', methods=['GET', 'POST'])
-def apartments():
+
+@app.route('/apartments', methods=['GET', 'POST'], defaults={'city': None})
+@app.route('/apartments/<city>', methods=['GET'])
+def apartments(city):
     request_params = {}
+    if request.method == 'GET':
+        if city is not None:
+            apartmentsList = fetch_apartments({'city': str(city)})
+            length = apartmentsList.count()
+            return render_template('apartments.html', apartmentsList=apartmentsList, length=length, city=str(city))
+        else:
+            apartmentsList = fetch_apartments(request_params)
+            length = apartmentsList.count()
+            return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
+
     if request.method == 'POST':
         request_params['city'] = str(request.form['city'])
         bedrooms = []
@@ -140,7 +153,18 @@ def apartments():
             request_params['furnished'] = False
     apartmentsList = fetch_apartments(request_params)
     length = apartmentsList.count()
-    return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
+    apartmentDump = []
+    for apartment in apartmentsList:
+        ap = {}
+        ap['title'] = apartment['title']
+        ap['city'] = apartment['city']
+        ap['bedrooms'] = apartment['bedrooms']
+        ap['price_range'] = apartment['price_range']
+        ap['furnished'] = apartment['furnished']
+        ap['image_name'] = url_for('file', filename=apartment['image_name'])
+        apartmentDump.append(ap)
+
+    return dumps(apartmentDump)
 
 
 def fetch_apartments(params):
