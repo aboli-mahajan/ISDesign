@@ -24,6 +24,10 @@
              return this.href == url;
         }).parent().addClass('active');
     });
+
+    function profile(){
+        alert("Sign In to update profile!");
+    }
 </script>
 
 <body id="mainBody">
@@ -48,9 +52,15 @@
             <li class="nav-item">
               <a class="nav-link" href="roommates">Find Roommate</a>
             </li>
+          {%  if session %}
             <li class="nav-item">
-              <a class="nav-link" href="userprofile">Profile</a>
+              <a class="nav-link" role="button" href="userprofile">Profile</a>
             </li>
+          {%  else%}
+           <li class="nav-item">
+              <a class="nav-link" role="button" onclick="profile()">Profile</a>
+            </li>
+          {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="aboutus">About Us</a>
             </li>
