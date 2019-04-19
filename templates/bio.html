@@ -1,0 +1,77 @@
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bio.css')}}"/>
+
+<div class="container">
+  <form style="padding-top: 4%">
+    <ul class="flex-outer">
+      <li>
+        <label for="movein">Move In</label>
+         <select name="movein">
+            <option value="immediate">Immediately</option>
+            <option value="month">Within a month</option>
+            <option value="threemonths">Within 3 months</option>
+        </select>
+      </li>
+      <li>
+
+          <label for="clean">Cleanliness Level</label>
+          <select name="Cleanliness level">
+            <option value="biohazard">I can be a bio hazard</option>
+            <option value="month">I keep common spaces clean but my room is a mess</option>
+            <option value="threemonths">I'm a dirt-o-phobe</option>
+          </select>
+      </li>
+
+      <li>
+          <label for="weekend_activity">On weekends I .. </label>
+          <select name="weekend_activity">
+            <option value="stayin">Stay In</option>
+            <option value="sad">What is a weekend? </option>
+            <option value="goout">Go Out</option>
+          </select>
+      </li>
+
+      <li>
+          <label for="bug"> Bug-friendliness </label>
+          <select name="bug">
+            <option value="scream">Scream at them! </option>
+            <option value="kill"> Kill them! </option>
+            <option value="nokill">They are gross but I have a no kill policy </option>
+          </select>
+      </li>
+
+      <li>
+        <label for="pet">Pet friendliness </label>
+          <select name="pet">
+            <option value="cuddle">Bring on the cuddles! </option>
+            <option value="like"> I'm cool with pets </option>
+            <option value="allergy"> Ever heard of allergies? </option>
+            <option value="dislike"> Don't like them, don't want them </option>
+          </select>
+      </li>
+
+      <li>
+        <p>Age</p>
+        <div>
+            <input type="radio" id="range_one" name="age" value="range_one" checked>
+            <label for="range_one">18 - 21 </label>
+        </div>
+        <div>
+            <input type="radio" id="range_two" name="age" value="range_two">
+            <label for="range_two"> 22 - 25 </label>
+        </div>
+        <div>
+            <input type="radio" id="range_three" name="age" value="range_three">
+            <label for="range_three"> 26 - 30 </label>
+        </div>
+        <div>
+            <input type="radio" id="range_four" name="age" value="range_four">
+            <label for="range_four"> 30+ </label>
+        </div>
+      </li>
+
+      <li>
+        <button type="submit" onclick="bio_info()">Submit</button>
+      </li>
+    </ul>
+  </form>
+</div>
