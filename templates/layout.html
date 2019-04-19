@@ -8,25 +8,25 @@
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/userprofile.css')}}"/>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"></script>
-
+  <script type="text/javascript" src="static/js/testscript.js"></script>
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}" ></script>
 </head>
 
 <script type="text/javascript">
-    (document).ready(function () {
+    $(document).ready(function () {
         var url = window.location;
-
-        ('ul.nav-item a').filter(function() {
+        $('ul.nav-item a').filter(function() {
              return this.href == url;
         }).parent().addClass('active');
     });
 </script>
 
-<body>
+<body id="mainBody">
     <nav class="navbar navbar-expand-lg navbar-dark" style="padding: 0px;" id= "header">
       <div class="container-fluid" style="margin: 0px; padding-left: 0px;" id="header-content">
        <a class="navbar-brand" style="padding: 0px; margin-left: 0px;" href="#">
@@ -49,7 +49,7 @@
               <a class="nav-link" href="#">Find Roommate</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+              <a class="nav-link" href="userprofile">Profile</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="aboutus">About Us</a>

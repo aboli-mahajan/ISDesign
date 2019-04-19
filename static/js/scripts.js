@@ -7,7 +7,6 @@ function myFunction(x) {
   } else {
     for(var i=0;i<elements.length;i++){
       elements[i].style.width="30vw";
-
     }
   }
 }
@@ -17,3 +16,32 @@ var x = window.matchMedia("(max-width: 480px)")
 x.addEventListener('load', myFunction)
 x.addEventListener('change', myFunction)
 myFunction(x)
+
+
+$('#apartmentsFilter').submit(function(e) {
+  e.preventDefault();
+  var formFilter = $(this);
+  var submitButton = $('input[type=submit]', formFilter);
+
+  $.ajax({
+    type: 'POST',
+    url: formFilter.prop('action'),
+    accept: {
+      javascript: 'application/javascript'
+    },
+    data: formFilter.serializeArray(),
+    beforeSend: function() {
+      submitButton.prop('disabled','disabled')
+    },
+    success: function(response) {
+      $('#mainBody').html(response)
+    }
+  }).done(function(data) {
+    submitButton.prop('disabled',false)
+  });
+});
+
+
+function submitApartmentForm(){
+  $('#apartmentForm').submit();
+}

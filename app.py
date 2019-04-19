@@ -37,6 +37,26 @@ def signup():
     return render_template('signup.html')
 
 
+<<<<<<< HEAD
+=======
+@app.route('/userprofile', methods=['GET', 'POST'])
+def userprofile():
+    if request.method == 'POST':
+        user = mongo.db.users.find_one({'email': session['email']})
+        mongo.db.users.update_one({"email": session['email']}, {"$set": {"first_name": request.form['f_name'], "last_name": request.form['l_name'],"email": request.form['email_id'], "location": request.form['location']}})
+        current_user = mongo.db.users.find_one({'email': session['email']})
+        return render_template('userprofile.html', user=current_user)
+    if request.method == 'GET':
+        current_user = mongo.db.users.find_one({'email': session['email']})
+        return render_template('userprofile.html', user=current_user)
+
+    return render_template('userprofile.html')
+
+@app.route('/bio')
+def bio():
+    return render_template('bio.html')
+
+>>>>>>> 8a94702509596aae26ad998a49aa8fc106a98d7c
 @app.route('/login', methods=['POST','GET'])
 def login():
     if request.method == 'POST':
@@ -49,10 +69,9 @@ def login():
                 session['first_name'] = login_user['first_name']
 
                 return redirect(url_for('index'))
-        return 'invalid user'
+        return render_template('notfound.html')
 
     return render_template('login.html')
-
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -92,7 +111,7 @@ def addapartments():
         request_params['title'] = request.form['title']
         request_params['bedrooms'] = int(request.form['bedrooms'])
         request_params['price_range'] = request.form['price_range']
-        if 'furnished' in request.form:
+        if request.form['furnished'] == 'yes':
             request_params['furnished'] = True
         else:
             request_params['furnished'] = False
@@ -104,8 +123,10 @@ def addapartments():
             request_params['image_name'] = photo.filename
             mongo.db.apartments.insert(request_params)
 
-    if request.method == 'GET':
-        return render_template('add_apartments.html')
+        apartmentsList = fetch_apartments({})
+        length = apartmentsList.count()
+        return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
+
     return render_template('index.html')
 
 
@@ -115,10 +136,24 @@ def logout():
         session.clear()
         return redirect(url_for('login'))
 
-
-@app.route('/apartments')
+@app.route('/apartments', methods=['GET', 'POST'])
 def apartments():
-    apartmentsList = fetch_apartments({})
+    request_params = {}
+    if request.method == 'POST':
+        request_params['city'] = str(request.form['city'])
+        bedrooms = []
+        for i in request.form.getlist('bedrooms'):
+            bedrooms.append(int(i))
+        price_range = []
+        for i in request.form.getlist('price'):
+            price_range.append(str(i))
+        request_params['bedrooms'] = {"$in": bedrooms}
+        request_params['price_range'] = {"$in": price_range}
+        if int(request.form['furnished']) == 1:
+            request_params['furnished'] = True
+        else:
+            request_params['furnished'] = False
+    apartmentsList = fetch_apartments(request_params)
     length = apartmentsList.count()
     return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
 
