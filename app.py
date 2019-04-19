@@ -37,8 +37,6 @@ def signup():
     return render_template('signup.html')
 
 
-<<<<<<< HEAD
-=======
 @app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
     if request.method == 'POST':
@@ -52,11 +50,7 @@ def userprofile():
 
     return render_template('userprofile.html')
 
-@app.route('/bio')
-def bio():
-    return render_template('bio.html')
 
->>>>>>> 8a94702509596aae26ad998a49aa8fc106a98d7c
 @app.route('/login', methods=['POST','GET'])
 def login():
     if request.method == 'POST':
@@ -64,7 +58,7 @@ def login():
         login_user = users.find_one({'email': request.form['username']})
 
         if login_user:
-            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']):
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
                 session['email'] = request.form['username']
                 session['first_name'] = login_user['first_name']
 
@@ -80,23 +74,14 @@ def register():
         existing_user = users.find_one({'email': request.form['email']})
 
         if existing_user is None:
-            request_params={}
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-
+            users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name']})
             session['email'] = request.form['email']
             session['first_name'] = request.form['first_name']
-            if 'photo' in request.files:
-                photo = request.files['photo']
-                mongo.save_file(photo.filename, photo)
-                mongo.db.users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name'], 'photo': photo.filename})
-
-            mongo.db.users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name'], 'photo': 'None'})
             return redirect(url_for('index'))
-
         return 'That email already exists!'
 
     return render_template('register.html')
-
 
 @app.route('/file/<filename>')
 def file(filename):
