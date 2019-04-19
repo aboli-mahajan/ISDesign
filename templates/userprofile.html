@@ -1,24 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
 
+
+
 <div class="container">
     <div class="view-account">
         <section class="module">
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
-                                   <img class= "img-profile img-circle img-responsive center-block" id="profile-pic" src="static/images/Neelesh.jpeg">
+                                   <img class= "img-profile img-circle img-responsive center-block" src="static/images/avatar.jpeg">
                          <ul class="meta list list-unstyled">
                              <li class="name">Edit
                                 <i class="fa fa-camera upload-button"></i>
                                 <input class="file-upload" type="file" accept="image/*"/>
                               </li>
-                             <li class="name">Rebecca Sanders
-                                <!--<label class="label label-info">UX Designer</label>-->
-                            </li>
-                             <li class="name">UX Designer
-                            </li>
-
                         </ul>
 
                     </div>
@@ -35,68 +31,55 @@
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Profile</h2>
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="POST">
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
                             <div class="form-group avatar">
 
 
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
-                                </div>
-                            </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name*</label>
+                                <div class="col-md-12 col-sm-9 col-xs-12">
+                                    <input name="f_name" type="text" class="form-control" value="{{ user['first_name'] }}" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Sanders">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name*</label>
+                                <div class="col-md-12 col-sm-9 col-xs-12">
+                                    <input name="l_name" type="text" class="form-control" value="{{ user['last_name'] }}" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Sex*</label>
+                                <div class="col-md-12 col-sm-9 col-xs-12">
+                                    <input name="gender" type="radio" name="Male">Male
+                                          <input name="gender" name="Female" type="radio" required="required"/>Female
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Contact Info</h3>
                             <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="email" class="form-control" value="Rebecca@website.com">
-
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email*</label>
+                                <div class="col-md-12 col-sm-9 col-xs-12">
+                                    <input name="email_id" type="email" class="form-control" value="{{ user['email'] }}" required="required">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Location</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
-
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Location*</label>
+                                <div class="col-md-12 col-sm-9 col-xs-12">
+                                    <input name="location" type="text" class="form-control" value="{{ user['location'] }}" required="required">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Age</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
 
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Sex</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
-
-                                </div>
-                            </div>
                         </fieldset>
                         <hr>
-                        <div class="form-group">
-                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                <input class="btn btn-primary" type="submit" style="background-color: #21b25b;" value="Update Profile">
+                        <div class="form-group" style="margin-bottom: 3.5rem;">
+                            <div class="col-md-12 col-sm-9 col-xs-12 ">
+                                <input class="btn btn-primary" type="submit" style="float:left;background-color: #21b25b;" value="Update Profile">
+                                <a class="btn btn-primary" style="float:right;background-color: #21b25b;" href="#" role="button">Update Bio</a>
                             </div>
                         </div>
                     </form>

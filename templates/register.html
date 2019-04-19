@@ -30,7 +30,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Register</h5>
-            <form action="{{ url_for('register') }}" class="form-signin" method="POST">
+            <form action="{{ url_for('register') }}" form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" class="form-control" name="first_name" placeholder="First Name" required="required">
                     </div>
@@ -46,6 +46,10 @@
                     <div class="form-group">
                         <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
                     </div>
+                    <div class="form-group">
+                        <input type="file" class="form-control" name="photo" placeholder="Photo">
+                    </div>
+
                     <div class="form-group">
                         <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
                     </div>

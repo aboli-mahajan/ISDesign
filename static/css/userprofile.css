@@ -8,6 +8,12 @@ background:#f9f9fb;
     display: block;
 }
 
+.img-profile{
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+}
+
 .file-upload {
     display: none;
 }

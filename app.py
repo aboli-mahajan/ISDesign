@@ -12,8 +12,10 @@ app.config['MONGO_URI'] = 'mongodb+srv://demo:demo123@cluster0-kmntv.mongodb.net
 
 mongo = PyMongo(app)
 
+
 def generateKey():
     return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
+
 
 @app.route('/')
 @app.route('/index')
@@ -25,17 +27,30 @@ def index():
     SfApartments = fetch_apartments({'city': 'San Francisco'})
     return render_template('index.html', AustinApartments=AustinApartments, MiamiApartments=MiamiApartments, NycApartments=NycApartments, SfApartments=SfApartments)
 
+
 @app.route('/aboutus')
 def aboutus():
     return render_template('aboutus.html')
+
 
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
 
-@app.route('/userprofile')
+
+@app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
+    if request.method == 'POST':
+        user = mongo.db.users.find_one({'email': session['email']})
+        mongo.db.users.update_one({"email": session['email']}, {"$set": {"first_name": request.form['f_name'], "last_name": request.form['l_name'],"email": request.form['email_id'], "location": request.form['location'], "gender": request.form['gender']}})
+        current_user = mongo.db.users.find_one({'email': session['email']})
+        return render_template('userprofile.html', user=current_user)
+    if request.method == 'GET':
+        current_user = mongo.db.users.find_one({'email': session['email']})
+        return render_template('userprofile.html', user=current_user)
+
     return render_template('userprofile.html')
+
 
 @app.route('/login', methods=['POST','GET'])
 def login():
@@ -73,6 +88,7 @@ def register():
 def file(filename):
     return mongo.send_file(filename)
 
+
 @app.route('/addapartments', methods=['GET', 'POST'])
 def addapartments():
     if request.method == 'POST':
@@ -98,6 +114,7 @@ def addapartments():
         return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
 
     return render_template('index.html')
+
 
 @app.route("/logout")
 def logout():
@@ -149,11 +166,32 @@ def apartments(city):
 
     return dumps(apartmentDump)
 
+
 def fetch_apartments(params):
     apartmentsList = mongo.db.apartments.find(params)
     return apartmentsList
+
+
+@app.route('/roommates')
+def roommates():
+    roommatesList = fetch_roommates({})
+    length = roommatesList.count()
+    return render_template('roommates.html', roommatesList=roommatesList, length=length)
+
+
+def fetch_roommates(params):
+    roommatesList = mongo.db.users.find(params)
+    return roommatesList
+
+
+@app.route('/bio')
+def bio():
+    return render_template('bio.html')
+
 
 if __name__ == '__main__':
     app.run()
 
 app.secret_key = 'mysecret1'
+
+
