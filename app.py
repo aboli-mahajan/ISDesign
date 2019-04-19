@@ -37,7 +37,7 @@ def signup():
 def userprofile():
     if request.method == 'POST':
         user = mongo.db.users.find_one({'email': session['email']})
-        mongo.db.users.update_one({"email": session['email']}, {"$set": {"first_name": request.form['f_name'], "last_name": request.form['l_name'],"email": request.form['email_id'], "location": request.form['location']}})
+        mongo.db.users.update_one({"email": session['email']}, {"$set": {"first_name": request.form['f_name'], "last_name": request.form['l_name'],"email": request.form['email_id'], "location": request.form['location'], "gender": request.form['gender']}})
         current_user = mongo.db.users.find_one({'email': session['email']})
         return render_template('userprofile.html', user=current_user)
     if request.method == 'GET':
