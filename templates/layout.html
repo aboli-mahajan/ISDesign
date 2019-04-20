@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/userprofile.css')}}"/>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/userprofile.css')}}"/>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -23,11 +23,19 @@
         $('ul.nav-item a').filter(function() {
              return this.href == url;
         }).parent().addClass('active');
-    });
 
-    function profile(){
-        alert("Sign In to update profile!");
-    }
+        $('#profile_alert').click(function() {
+    $('.alert').show()
+  });
+        $('#linkclose').click(function () {
+            $('.alert').hide('fade');
+
+        });
+
+        //$(".alert").alert('close');
+
+});
+
 </script>
 
 <body id="mainBody">
@@ -36,10 +44,10 @@
        <a class="navbar-brand" style="padding: 0px; margin-left: 0px;" href="#">
           <img class="img-responsive" src="{{url_for('static', filename='images/Logo-darkest.png')}}" style="height: 50px" />
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" role="navigation" id="navbarResponsive" style="margin-left: 0px;">
+        <div class="collapse navbar-collapse " role="navigation" id="navbarResponsive" style="margin-left: 0px;">
           <ul class="navbar-nav ml-auto" style="margin-right: 0px;">
             <li class="nav-item active">
               <a class="nav-link" href="index">Home
@@ -52,21 +60,21 @@
             <li class="nav-item">
               <a class="nav-link" href="roommates">Find Roommate</a>
             </li>
-          {%  if session %}
-            <li class="nav-item">
-              <a class="nav-link" role="button" href="userprofile">Profile</a>
-            </li>
-          {%  else%}
-           <li class="nav-item">
-              <a class="nav-link" role="button" onclick="profile()">Profile</a>
-            </li>
-          {% endif %}
+{#          {%  if session %}#}
+{#            <li class="nav-item">#}
+{#              <a class="nav-link"  href="userprofile"></a>#}
+{#            </li>#}
+{#          {%  else%}#}
+{#           <li class="nav-item">#}
+{#              <a class="nav-link" data-dismiss="alert" aria-label="close" id="profile_alert" href="#">Profile</a>#}
+{#            </li>#}
+{#          {% endif %}#}
             <li class="nav-item">
               <a class="nav-link" href="aboutus">About Us</a>
             </li>
               {%  if session %}
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-user-circle fa-lg" ></i> {{session['first_name']}} </a>
+              <a class="nav-link" href="userprofile"><i class="fas fa-user-circle fa-lg" ></i> {{session['first_name']}} </a>
             </li>
                   <li class="nav-item">
               <a class="nav-link" href="logout">Sign Out</a>
@@ -80,6 +88,10 @@
         </div>
       </div>
     </nav>
+    <div class="alert alert-danger collapse"  style="display:none;">
+        <a id="linkclose" href="#" class="close" >&times;</a>
+                 <strong>Please Sign In to update Profile!</strong>
+                  </div>
     {% block content %} {% endblock %}
     <div class= "footer">
       <p id="contactus"> Contact Us &nbsp; </p>

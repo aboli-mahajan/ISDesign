@@ -117,9 +117,12 @@ def login():
                 session['first_name'] = login_user['first_name']
 
                 return redirect(url_for('index'))
-        return render_template('notfound.html')
+            else:
+                return render_template('login.html', error='wrongpass')
+        else:
+            return render_template('login.html', error='wrongpass')
 
-    return render_template('login.html')
+    return render_template('login.html', error='')
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
