@@ -72,3 +72,13 @@
 .carousel-inner > .carousel-item > img {
   height: 250px;
 }
+
+
+.likebtn {
+    background-color: #21b25b;
+    color: white;
+}
+
+.likebtn:hover {
+    color: black;
+}

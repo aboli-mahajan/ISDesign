@@ -136,6 +136,10 @@
                     <div class="card-body px-2" style="width:50%;">
                         <h4 class="card-title">{{ apartmentsList[i].title }}</h4>
                         <p class="card-text text-left">A {{ apartmentsList[i].bedrooms }} bedroom apartment in the the city of {{ apartmentsList[i].city }}. Approximate price range is between {{ apartmentsList[i].price_range }}</p>
+                        <button type="button" class="btn btn-light ml-auto likebtn" onclick="likeApartment({{ apartmentsList[i].dump }},{{ i }})" id="btn{{ i }}">
+                            Like
+                            <i class="fa fa-thumbs-up"></i>
+                        </button>
                     </div>
                 </div>
                 {%endfor%}

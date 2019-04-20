@@ -4,6 +4,7 @@ import bcrypt
 import string
 import random
 from bson.json_util import dumps
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
@@ -132,7 +133,7 @@ def register():
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name']})
+            users.insert({'email': request.form['email'], 'password': hashpass, 'first_name': request.form['first_name'], 'last_name': request.form['last_name'], 'apartments_liked': []})
             session['email'] = request.form['email']
             session['first_name'] = request.form['first_name']
             return redirect(url_for('index'))
@@ -187,11 +188,35 @@ def apartments(city):
         if city is not None:
             apartmentsList = fetch_apartments({'city': str(city)})
             length = apartmentsList.count()
-            return render_template('apartments.html', apartmentsList=apartmentsList, length=length, city=str(city))
+            apartmentDump = []
+            for apartment in apartmentsList:
+                ap = {}
+                ap['id'] = str(apartment['_id'])
+                ap['title'] = apartment['title']
+                ap['city'] = apartment['city']
+                ap['bedrooms'] = apartment['bedrooms']
+                ap['price_range'] = apartment['price_range']
+                ap['furnished'] = apartment['furnished']
+                ap['image_name'] = apartment['image_name']
+                ap['dump'] = dumps(ap)
+                apartmentDump.append(ap)
+            return render_template('apartments.html', apartmentsList=apartmentDump, length=length, city=str(city))
         else:
             apartmentsList = fetch_apartments(request_params)
             length = apartmentsList.count()
-            return render_template('apartments.html', apartmentsList=apartmentsList, length=length)
+            apartmentDump = []
+            for apartment in apartmentsList:
+                ap = {}
+                ap['id'] = str(apartment['_id'])
+                ap['title'] = apartment['title']
+                ap['city'] = apartment['city']
+                ap['bedrooms'] = apartment['bedrooms']
+                ap['price_range'] = apartment['price_range']
+                ap['furnished'] = apartment['furnished']
+                ap['image_name'] = apartment['image_name']
+                ap['dump'] = dumps(ap)
+                apartmentDump.append(ap)
+            return render_template('apartments.html', apartmentsList=apartmentDump, length=length)
 
     if request.method == 'POST':
         request_params['city'] = str(request.form['city'])
@@ -211,6 +236,7 @@ def apartments(city):
     apartmentDump = []
     for apartment in apartmentsList:
         ap = {}
+        ap['id'] = str(apartment['_id'])
         ap['title'] = apartment['title']
         ap['city'] = apartment['city']
         ap['bedrooms'] = apartment['bedrooms']
@@ -242,6 +268,21 @@ def fetch_roommates(params):
 @app.route('/bio')
 def bio():
     return render_template('bio.html')
+
+
+@app.route('/likeApartment', methods=['POST'])
+def likeApartment():
+    apartment_id = str(request.form['ap_id'])
+    useremail = session['email']
+    user = mongo.db.users.find_one({'email': useremail})
+    userapartments = user['apartments_liked']
+    apartment = mongo.db.apartments.find_one({'_id': ObjectId(apartment_id)})
+    seen =  set(userapartments)
+    if apartment['_id'] not in seen:
+        seen.add(apartment['_id'])
+        userapartments.append(apartment['_id'])
+    mongo.db.users.update_one({"email": session['email']}, {"$set": {"apartments_liked": userapartments}})
+    return ('', 204)
 
 
 if __name__ == '__main__':

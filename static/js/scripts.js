@@ -37,8 +37,10 @@ $('#apartmentsFilter').submit(function(e) {
       const jsonData = JSON.parse(response);
       var apDiv = document.getElementById('apartmentList');
       apDiv.innerHTML="";
+      cnt = 0;
       for(ap_index in jsonData) {
-        apDiv.appendChild(get_card(jsonData[ap_index]))
+        apDiv.appendChild(get_card(jsonData[ap_index], cnt));
+        cnt++;
       }
 
       myFunction(x)
@@ -49,7 +51,7 @@ $('#apartmentsFilter').submit(function(e) {
 });
 
 
-function get_card(data) {
+function get_card(data, cnt) {
   let outerDiv = document.createElement('div');
   outerDiv.classList.add("card", "flex-row", "flex-wrap", "d-flex", "align-items-stretch");
   outerDiv.style.cssText = "margin: 20px 10px 10px 10px;";
@@ -77,8 +79,20 @@ function get_card(data) {
   para.innerText = "A " + data['bedrooms'] + " bedroom apartment in the the city of " + data['city'] +
       " Approximate price range is between " + data['price_range'];
 
+  let button = document.createElement('button');
+  button.classList.add('btn', 'btn-light', 'ml-auto', 'likebtn');
+  button.id = 'btn'+cnt;
+  button.onclick = function() { likeApartment(data,cnt) };
+  button.innerText = 'Like ';
+
+  let icon = document.createElement('i');
+  icon.classList.add('fa','fa-thumbs-up');
+
+  button.appendChild(icon);
+
   cardBody.appendChild(heading);
   cardBody.appendChild(para);
+  cardBody.appendChild(button);
 
   outerDiv.appendChild(cardHeader);
   outerDiv.appendChild(cardBody);
@@ -182,4 +196,20 @@ function closeApartmentDetails() {
   modalDiv.style.display = 'none';
   var body = document.getElementById('mainBody');
   body.style.overflow = "scroll";
+}
+
+
+function likeApartment(apartment, i) {
+  $.ajax({
+    type: 'POST',
+    url: 'likeApartment',
+    accept: {
+      javascript: 'application/javascript'
+    },
+    data: {'ap_id': apartment['id']},
+    success: function(response) {
+      var submitButton = document.getElementById('btn'+i);
+      submitButton.disabled = true;
+    }
+  });
 }
