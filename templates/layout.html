@@ -60,21 +60,21 @@
             <li class="nav-item">
               <a class="nav-link" href="roommates">Find Roommate</a>
             </li>
-          {%  if session %}
-            <li class="nav-item">
-              <a class="nav-link"  href="userprofile">Profile</a>
-            </li>
-          {%  else%}
-           <li class="nav-item">
-              <a class="nav-link" data-dismiss="alert" aria-label="close" id="profile_alert" href="#">Profile</a>
-            </li>
-          {% endif %}
+{#          {%  if session %}#}
+{#            <li class="nav-item">#}
+{#              <a class="nav-link"  href="userprofile"></a>#}
+{#            </li>#}
+{#          {%  else%}#}
+{#           <li class="nav-item">#}
+{#              <a class="nav-link" data-dismiss="alert" aria-label="close" id="profile_alert" href="#">Profile</a>#}
+{#            </li>#}
+{#          {% endif %}#}
             <li class="nav-item">
               <a class="nav-link" href="aboutus">About Us</a>
             </li>
               {%  if session %}
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-user-circle fa-lg" ></i> {{session['first_name']}} </a>
+              <a class="nav-link" href="userprofile"><i class="fas fa-user-circle fa-lg" ></i> {{session['first_name']}} </a>
             </li>
                   <li class="nav-item">
               <a class="nav-link" href="logout">Sign Out</a>
