@@ -242,9 +242,22 @@ def fetch_roommates(params):
     return roommatesList
 
 
-@app.route('/bio')
+@app.route('/bio', methods=['GET', 'POST'])
 def bio():
-    return render_template('bio.html')
+        if request.method == 'POST':
+            mongo.db.users.update_one({"email": session['email']}, {
+                "$set": {"movein": request.form['movein'], "clean": request.form['clean'], "bug": request.form['bug'],
+                         "weekend_activity": request.form['weekend_activity'], "pet": request.form['pet'],
+                         "age": request.form['age'], "bio":request.form['bio']}})
+            current_user = mongo.db.users.find_one({'email': session['email']})
+            return render_template('bio.html', user=current_user)
+        if request.method == 'GET':
+            current_user = mongo.db.users.find_one({'email': session['email']})
+
+            return render_template('bio.html', user=current_user)
+
+        return render_template('bio.html')
+
 
 
 if __name__ == '__main__':
