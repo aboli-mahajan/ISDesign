@@ -31,34 +31,42 @@
       <div class="row card-deck">
         <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
           <div class="card text-white" style="margin: 5px;">
+            <a href="{{url_for('apartments',city='San Francisco')}}" style="text-decoration: none; color:white;">
             <img src="{{url_for('static', filename='images/SF.jpg')}}" class="card-img-top img-fluid" alt="San Francisco" style="object-fit: cover; width: 100%; height: 15vw;">
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
               <h6 class="card-title">San Francisco</h6>
             </div>
+            </a>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
           <div class="card text-white" style="margin: 5px;">
+            <a href="{{url_for('apartments',city='New York')}}" style="text-decoration: none; color:white;">
             <img src="{{url_for('static', filename='images/NY.jpg')}}" class="card-img-top" alt="..." style="object-fit: cover; width: 100%; height: 15vw;">
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
               <h6 class="card-title">New York</h6>
             </div>
+            </a>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
           <div class="card text-white" style="margin: 5px;">
+            <a href="{{url_for('apartments',city='Austin')}}" style="text-decoration: none; color:white;">
             <img src="{{url_for('static', filename='images/Austin.jpg')}}" class="card-img-top" alt="..." style="object-fit: cover; width: 100%; height: 15vw;">
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
               <h6 class="card-title">Austin</h6>
             </div>
+            </a>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
           <div class="card text-white" style="margin: 5px;">
+            <a href="{{url_for('apartments',city='Miami')}}" style="text-decoration: none; color:white;">
             <img src="{{url_for('static', filename='images/Miami.jpg')}}" class="card-img-top" alt="..." style="object-fit: cover; width: 100%; height: 15vw;">
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
               <h6 class="card-title">Miami</h6>
             </div>
+            </a>
           </div>
         </div>
       </div>
@@ -68,16 +76,18 @@
     <br/>
 
     <div class="container" style="margin-top: 10px;">
-      <p class="h4"><b>Top places to live in Austin</b></p>
+      <p class="h4"><a href="{{url_for('apartments',city='Austin')}}" style="text-decoration: none; color:black;"><b>Top places to live in Austin</b></a></p>
       <p class="h6">Find your favorite apartments here</p>
       <div class="row card-deck">
         {%for i in range(0, 4)%}
           <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
             <div class="card text-left" style="margin: 5px;">
+              <a data-toggle="modal" class="open-ApartmentDialogAustin" href="#" style="text-decoration: none;" onclick="modal_display({{ AustinApartments[i].dump }})">
               <img src="{{url_for('file', filename=AustinApartments[i].image_name )}}" class="card-img-top" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
               <div class="card-body" style="margin:0px;">
-                <p class="card-text">{{ AustinApartments[i].title }}</p>
+                <p class="card-text" style="color:black;">{{ AustinApartments[i].title }}</p>
               </div>
+              </a>
             </div>
           </div>
         {%endfor%}
@@ -87,16 +97,18 @@
     <br/>
 
     <div class="container" style="margin-top: 10px;">
-      <p class="h4"><b>Top places to live in Miami</b></p>
+      <p class="h4"><a href="{{url_for('apartments',city='Miami')}}" style="text-decoration: none; color:black;"><b>Top places to live in Miami</b></a></p>
       <p class="h6">Find your favorite apartments here</p>
       <div class="row card-deck">
         {%for i in range(0, 4)%}
           <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
             <div class="card text-left" style="margin: 5px;">
+              <a data-toggle="modal" class="open-ApartmentDialogAustin" href="#" style="text-decoration: none;" onclick="modal_display({{ MiamiApartments[i].dump }})">
               <img src="{{url_for('file', filename=MiamiApartments[i].image_name )}}" class="card-img-top" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
               <div class="card-body" style="margin:0px;">
-                <p class="card-text">{{ MiamiApartments[i].title }}</p>
+                <p class="card-text" style="color:black;">{{ MiamiApartments[i].title }}</p>
               </div>
+              </a>
             </div>
           </div>
         {%endfor%}
@@ -106,16 +118,18 @@
     <br/>
 
     <div class="container" style="margin-top: 10px;">
-      <p class="h4"><b>Top places to live in New York</b></p>
+      <p class="h4"><a href="{{url_for('apartments',city='New York')}}" style="text-decoration: none; color:black;"><b>Top places to live in New York</b></a></p>
       <p class="h6">Find your favorite apartments here</p>
       <div class="row card-deck">
         {%for i in range(0, 4)%}
           <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
             <div class="card text-left" style="margin: 5px;">
+              <a data-toggle="modal" class="open-ApartmentDialogAustin" href="#" style="text-decoration: none;" onclick="modal_display({{ NycApartments[i].dump }})">
               <img src="{{url_for('file', filename=NycApartments[i].image_name )}}" class="card-img-top" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
               <div class="card-body" style="margin:0px;">
-                <p class="card-text">{{ NycApartments[i].title }}</p>
+                <p class="card-text" style="color:black;">{{ NycApartments[i].title }}</p>
               </div>
+            </a>
             </div>
           </div>
         {%endfor%}
@@ -125,19 +139,40 @@
     <br/>
 
     <div class="container" style="margin-top: 10px;">
-      <p class="h4"><b>Top places to live in San Francisco</b></p>
+      <p class="h4"><a href="{{url_for('apartments',city='San Francisco')}}" style="text-decoration: none; color:black;"><b>Top places to live in San Francisco</b></a></p>
       <p class="h6">Find your favorite apartments here</p>
       <div class="row card-deck">
         {%for i in range(0, 4)%}
           <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
             <div class="card text-left" style="margin: 5px;">
+              <a data-toggle="modal" class="open-ApartmentDialogAustin" href="#" style="text-decoration: none;" onclick="modal_display({{ SfApartments[i].dump }})">
               <img src="{{url_for('file', filename=SfApartments[i].image_name )}}" class="card-img-top" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
               <div class="card-body" style="margin:0px;">
-                <p class="card-text">{{ SfApartments[i].title }}</p>
+                <p class="card-text" style="color:black;">{{ SfApartments[i].title }}</p>
               </div>
+            </a>
             </div>
           </div>
         {%endfor%}
+      </div>
+    </div>
+
+    <div class="modal" id="apartmentDetailsModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header mx-0">
+            <h5 class="modal-title mx-0">View your future apartment!</h5>
+            <button type="button" class="close" onclick="closeApartmentDetails()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="apartmentModalBody">
+
+          </div>
+          <div class="modal-footer mx-0">
+            <button type="button" class="btn btn-secondary" onclick="closeApartmentDetails()">Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
 

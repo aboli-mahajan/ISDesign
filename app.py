@@ -25,7 +25,60 @@ def index():
     MiamiApartments = fetch_apartments({'city': 'Miami'})
     NycApartments = fetch_apartments({'city': 'New York'})
     SfApartments = fetch_apartments({'city': 'San Francisco'})
-    return render_template('index.html', AustinApartments=AustinApartments, MiamiApartments=MiamiApartments, NycApartments=NycApartments, SfApartments=SfApartments)
+
+    austinApartments = []
+    for apartment in AustinApartments:
+        ap = {}
+        ap['title'] = apartment['title']
+        ap['city'] = apartment['city']
+        ap['bedrooms'] = apartment['bedrooms']
+        ap['price_range'] = apartment['price_range']
+        ap['furnished'] = apartment['furnished']
+        ap['image_name'] = apartment['image_name']
+        ap['image_url'] = url_for('file', filename=apartment['image_name'])
+        ap['dump'] = dumps(ap)
+        austinApartments.append(ap)
+
+    miamiApartments = []
+    for apartment in MiamiApartments:
+        ap = {}
+        ap['title'] = apartment['title']
+        ap['city'] = apartment['city']
+        ap['bedrooms'] = apartment['bedrooms']
+        ap['price_range'] = apartment['price_range']
+        ap['furnished'] = apartment['furnished']
+        ap['image_name'] = apartment['image_name']
+        ap['image_url'] = url_for('file', filename=apartment['image_name'])
+        ap['dump'] = dumps(ap)
+        miamiApartments.append(ap)
+
+    nycApartments = []
+    for apartment in NycApartments:
+        ap = {}
+        ap['title'] = apartment['title']
+        ap['city'] = apartment['city']
+        ap['bedrooms'] = apartment['bedrooms']
+        ap['price_range'] = apartment['price_range']
+        ap['furnished'] = apartment['furnished']
+        ap['image_name'] = apartment['image_name']
+        ap['image_url'] = url_for('file', filename=apartment['image_name'])
+        ap['dump'] = dumps(ap)
+        nycApartments.append(ap)
+
+    sfApartments = []
+    for apartment in SfApartments:
+        ap = {}
+        ap['title'] = apartment['title']
+        ap['city'] = apartment['city']
+        ap['bedrooms'] = apartment['bedrooms']
+        ap['price_range'] = apartment['price_range']
+        ap['furnished'] = apartment['furnished']
+        ap['image_name'] = apartment['image_name']
+        ap['image_url'] = url_for('file', filename=apartment['image_name'])
+        ap['dump'] = dumps(ap)
+        sfApartments.append(ap)
+
+    return render_template('index.html', AustinApartments=austinApartments, MiamiApartments=miamiApartments, NycApartments=nycApartments, SfApartments=sfApartments)
 
 
 @app.route('/aboutus')
@@ -152,7 +205,6 @@ def apartments(city):
         else:
             request_params['furnished'] = False
     apartmentsList = fetch_apartments(request_params)
-    length = apartmentsList.count()
     apartmentDump = []
     for apartment in apartmentsList:
         ap = {}
