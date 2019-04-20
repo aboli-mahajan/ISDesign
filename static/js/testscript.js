@@ -1,5 +1,20 @@
-$(document).ready(function() {
+function checkRadio() {
+     var gender = '{{ user[\'gender\'] }}'
 
+    if ( gender == "Male" ){
+         radiobtn = document.getElementById("male");
+         radiobtn.attr('checked','checked');
+
+         }else{
+         radiobtn = document.getElementById("female");
+         radiobtn.attr('checked','checked');
+
+    }
+}
+
+let ready = $(document).ready(function() {
+
+    checkRadio();
     var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

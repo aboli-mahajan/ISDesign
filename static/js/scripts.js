@@ -114,6 +114,7 @@ function modal_display(data) {
     apDiv.appendChild(createModal(data));
   var modalDiv = document.getElementById('apartmentDetailsModal');
   modalDiv.style.display = 'block';
+  modalDiv.style.overflow="scroll";
   var body = document.getElementById('mainBody');
   body.style.overflow = "hidden";
 }
