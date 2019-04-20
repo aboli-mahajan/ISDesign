@@ -91,6 +91,9 @@ def register():
 def file(filename):
     return mongo.send_file(filename)
 
+@app.route('/privacypolicy')
+def privacypolicy():
+    return render_template('privacypolicy.html')
 
 @app.route('/addapartments', methods=['GET', 'POST'])
 def addapartments():
