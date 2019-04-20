@@ -91,6 +91,95 @@ function submitApartmentForm(){
 }
 
 
-function foo(data) {
-  console.log(data)
+function modal_display(data) {
+  console.log(data);
+  var apDiv = document.getElementById('apartmentModalBody');
+  apDiv.innerHTML="";
+  apDiv.classList.add('mx-0');
+  if(data != "")
+    apDiv.appendChild(createModal(data));
+  var modalDiv = document.getElementById('apartmentDetailsModal');
+  modalDiv.style.display = 'block';
+  var body = document.getElementById('mainBody');
+  body.style.overflow = "hidden";
+}
+
+
+function createModal(data){
+  let outerDiv = document.createElement('div');
+  outerDiv.classList.add("modal-body", "mx-0");
+  // outerDiv.style.height = "100%";
+  // outerDiv.style.position = "fixed";
+  outerDiv.style.overflowY = "scroll";
+
+  let titleDiv = document.createElement('div');
+  let titleH = document.createElement('h6');
+  titleH.innerText = 'Title';
+
+  let titleP = document.createElement('p');
+  titleP.innerText = data['title'];
+
+  let cityDiv = document.createElement('div');
+  let cityH = document.createElement('h6');
+  cityH.innerText = 'City';
+
+  let cityP = document.createElement('p');
+  cityP.innerText = data['city'];
+
+  let priceDiv = document.createElement('div');
+  let priceH = document.createElement('h6');
+  priceH.innerText = 'Price Range';
+
+  let priceP = document.createElement('p');
+  priceP.innerText = data['price_range'];
+
+  let bedroomDiv = document.createElement('div');
+  let bedroomH = document.createElement('h6');
+  bedroomH.innerText = 'Number of Bedrooms';
+
+  let bedroomP = document.createElement('p');
+  bedroomP.innerText = data['bedrooms'];
+
+  let furnishedDiv = document.createElement('div');
+  let furnishedH = document.createElement('h6');
+  furnishedH.innerText = 'Furnished';
+
+  let furnishedP = document.createElement('p');
+  furnishedP.innerText = (data['furnished'] == true) ? 'Yes' : 'No';
+
+  let img = document.createElement('img');
+  img.src = data['image_url'];
+  // img.style.cssText = "height: 30vh; weight: 100%;";
+
+  titleDiv.appendChild(titleH);
+  titleDiv.appendChild((titleP));
+
+  cityDiv.appendChild(cityH);
+  cityDiv.appendChild(cityP);
+
+  priceDiv.appendChild(priceH);
+  priceDiv.appendChild(priceP);
+
+  bedroomDiv.appendChild(bedroomH);
+  bedroomDiv.appendChild(bedroomP);
+
+  furnishedDiv.appendChild(furnishedH);
+  furnishedDiv.appendChild(furnishedP);
+
+  outerDiv.appendChild(titleDiv);
+  outerDiv.appendChild(cityDiv);
+  outerDiv.appendChild(priceDiv);
+  outerDiv.appendChild(bedroomDiv);
+  outerDiv.appendChild(furnishedDiv);
+  outerDiv.appendChild(img);
+
+  return outerDiv;
+}
+
+
+function closeApartmentDetails() {
+  var modalDiv = document.getElementById('apartmentDetailsModal');
+  modalDiv.style.display = 'none';
+  var body = document.getElementById('mainBody');
+  body.style.overflow = "scroll";
 }
