@@ -1,8 +1,11 @@
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bio.css')}}"/>
+{% extends "layout.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bio.css')}}"/>
 
 <div class="container">
-  <form style="padding-top: 4%">
-    <ul class="flex-outer">
+  <form style="padding-top: 4%; width:100%;">
+    <ul class="flex-outer" style="width: 100%; margin: auto; ">
       <li>
         <label for="movein">Move In</label>
          <select name="movein">
@@ -16,7 +19,7 @@
           <label for="clean">Cleanliness Level</label>
           <select name="Cleanliness level">
             <option value="biohazard">I can be a bio hazard</option>
-            <option value="month">I keep common spaces clean but my room is a mess</option>
+            <option value="month">I keep common spaces clean</option>
             <option value="threemonths">I'm a dirt-o-phobe</option>
           </select>
       </li>
@@ -48,30 +51,40 @@
             <option value="dislike"> Don't like them, don't want them </option>
           </select>
       </li>
+      <li>
+          <label for="bio" >My Bio </label>
+          <textarea id = "bio" rows="6" cols="50" name="bio" style="padding: 2px">
+
+          </textarea>
+      </li>
 
       <li>
-        <p>Age</p>
-        <div>
+        <p>AGE</p>
+          <ul class = "flex-inner">
+        <li>
             <input type="radio" id="range_one" name="age" value="range_one" checked>
             <label for="range_one">18 - 21 </label>
-        </div>
-        <div>
+        </li>
+        <li>
             <input type="radio" id="range_two" name="age" value="range_two">
             <label for="range_two"> 22 - 25 </label>
-        </div>
-        <div>
+        </li>
+        <li>
             <input type="radio" id="range_three" name="age" value="range_three">
             <label for="range_three"> 26 - 30 </label>
-        </div>
-        <div>
+        </li>
+        <li>
             <input type="radio" id="range_four" name="age" value="range_four">
             <label for="range_four"> 30+ </label>
-        </div>
-      </li>
+        </li>
+        </ul>
+        </li>
 
-      <li>
-        <button type="submit" onclick="bio_info()">Submit</button>
-      </li>
+        <li>
+        <button type="submit" onclick="bio_info()" >Submit</button>
+        </li>
     </ul>
   </form>
 </div>
+
+{% endblock content %}
