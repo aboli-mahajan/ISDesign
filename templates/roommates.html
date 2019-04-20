@@ -14,9 +14,10 @@
                 </div>
                 <div class="card-body px-2" style="width:50%;">
                     <h4 class="card-title">{{roommatesList[i].first_name}}&nbsp{{roommatesList[i].last_name}}</h4>
-                    <p class="card-text text-left" style="margin-left: 0px">{{ roommatesList[i].email}}<br/>Move in:<br/>Gender:<br/>Age:<br/>Profession:<br/></p>
+                    <p class="card-text text-left" style="margin-left: 0px">{{ roommatesList[i].email}}<br/>Move in: {{ roommatesList[i].movein }}<br/>Gender:<br/>Age:<br/></p>
                     <a class="button" data-toggle="collapse" data-target="#bio{{ i }}"> <button> Show More! </button></a>
-                    <p id="bio{{ i }}"> This is my bio </p>
+                    <p class="collapse" id="bio{{ i }}"> {{ roommatesList[i].bio }} <br/> <a class="button" href="mailto: : {{ roommatesList[i].email }}"> Contact Me </a></p>
+
                 </div>
             </div>
           {%endfor%}

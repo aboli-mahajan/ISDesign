@@ -14,12 +14,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div id="header">
     <div id="header-content">
         <a href="index">
         <img class="center" src="static/images/Logosignin.png"/>
-        <a>
+        </a>
     </div>
 </div>
 <p>&nbsp;</p>
@@ -27,7 +28,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto my-auto">
-        <div class="card card-signin my-5">
+        <div class="card card-signin my-5" style="height: 80%; position: fixed; overflow: scroll;">
           <div class="card-body">
             <h5 class="card-title text-center">Register</h5>
             <form action="{{ url_for('register') }}" form method="POST" enctype="multipart/form-data">
@@ -46,8 +47,23 @@
                     <div class="form-group">
                         <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
                     </div>
+                    <div class="form-group" style="padding-top: 5%;">
+                        <fieldset>
+                            <legend style="font-size: 1.1rem; margin: auto;"> Password Recovery </legend>
+                            <label for="security_ques"> Security Question </label>
+                            <select name="security_ques" id="security_ques" placeholder ="Security Question" required="required" style="width: 100%; padding: 3%;">
+                                <option value="spotinhome">Which is your favorite spot in a house? </option>
+                                <option value="person">Who is your 'homie'? </option>
+                                <option value="person">Where would your dream house be? </option>
+                            </select>
 
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <label for="security_ans"> Answer </label>
+                        <input type="text" class="form-control" id = "security_ans" name="security_ans" placeholder="Answer" required="required">
 
+                    </div>
                     <div class="form-group">
                         <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="privacypolicy">Privacy Policy</a></label>
                     </div>

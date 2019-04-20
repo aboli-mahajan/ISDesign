@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bio.css')}}"/>
 
 <div class="container">
-  <form style="padding-top: 4%; width:100%;">
+  <form method="POST" style="padding-top: 4%; width:100%;">
     <ul class="flex-outer" style="width: 100%; margin: auto; ">
       <li>
         <label for="movein">Move In</label>
@@ -17,7 +17,7 @@
       <li>
 
           <label for="clean">Cleanliness Level</label>
-          <select name="Cleanliness level">
+          <select name="clean">
             <option value="biohazard">I can be a bio hazard</option>
             <option value="month">I keep common spaces clean</option>
             <option value="threemonths">I'm a dirt-o-phobe</option>
@@ -62,19 +62,19 @@
         <p>AGE</p>
           <ul class = "flex-inner">
         <li>
-            <input type="radio" id="range_one" name="age" value="range_one" checked>
+            <input type="radio" id="range_one" name="age" value="18-25" checked>
             <label for="range_one">18 - 21 </label>
         </li>
         <li>
-            <input type="radio" id="range_two" name="age" value="range_two">
+            <input type="radio" id="range_two" name="age" value="22-25">
             <label for="range_two"> 22 - 25 </label>
         </li>
         <li>
-            <input type="radio" id="range_three" name="age" value="range_three">
+            <input type="radio" id="range_three" name="age" value="26-30">
             <label for="range_three"> 26 - 30 </label>
         </li>
         <li>
-            <input type="radio" id="range_four" name="age" value="range_four">
+            <input type="radio" id="range_four" name="age" value="30+">
             <label for="range_four"> 30+ </label>
         </li>
         </ul>
