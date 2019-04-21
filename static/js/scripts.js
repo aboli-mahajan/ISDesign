@@ -1,3 +1,35 @@
+
+function checkCityRadio() {
+    try {
+        if (city_name !== 'undefined') {
+
+            if (city_name == "Austin") {
+
+                radiobtn = document.getElementById("austin");
+                radiobtn.checked = "true";
+            } else if (city_name == "San Francisco") {
+                radiobtn = document.getElementById("sf");
+                radiobtn.checked = "true";
+
+            } else if (city_name == "Miami") {
+                radiobtn = document.getElementById("miami");
+                radiobtn.checked = "true";
+
+            } else if (city_name == "New York") {
+                radiobtn = document.getElementById("nyc");
+                radiobtn.checked = "true";
+            }
+
+        }
+
+    }
+    catch(e){
+        if(e instanceof ReferenceError){
+            return;
+        }
+    }
+}
+
 function myFunction(x) {
   var elements = document.getElementsByClassName('apartmentsImg');
   if (x.matches) { // If media query matches
@@ -16,7 +48,7 @@ var x = window.matchMedia("(max-width: 480px)")
 x.addEventListener('load', myFunction)
 x.addEventListener('change', myFunction)
 myFunction(x)
-
+checkCityRadio();
 
 $('#apartmentsFilter').submit(function(e) {
   e.preventDefault();
