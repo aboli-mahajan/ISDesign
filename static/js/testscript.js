@@ -12,7 +12,10 @@ function checkRadio() {
                 radiobtn.checked = "true";
 
             }
-
+            else {
+                radiobtn = document.getElementById("nd");
+                radiobtn.checked = "true";
+            }
         }
 
     }
