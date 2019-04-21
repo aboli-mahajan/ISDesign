@@ -1,32 +1,44 @@
 function checkRadio() {
-     var gender = '{{ user[\'gender\'] }}'
+    try {
+        if (gender !== 'undefined') {
 
-    if ( gender == "Male" ){
-         radiobtn = document.getElementById("male");
-         radiobtn.attr('checked','checked');
+            if (gender == "male") {
 
-         }else{
-         radiobtn = document.getElementById("female");
-         radiobtn.attr('checked','checked');
+                radiobtn = document.getElementById("male");
+                //radiobtn.attr('checked','checked');
+                radiobtn.checked = "true";
+            } else if (gender == "female") {
+                radiobtn = document.getElementById("female");
+                radiobtn.checked = "true";
 
+            }
+
+        }
     }
-}
+    catch(e){
+        if(e instanceof ReferenceError){
+            return;
+        }
+    }
 
+
+}
 let ready = $(document).ready(function() {
 
     checkRadio();
+
     var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $(".img-profile").show().attr('src', e.target.result);
+                $(".img-profile").show().attr('src', e.target.result)
             }
 
             reader.readAsDataURL(input.files[0]);
         }
-    }
 
+    }
 
     $(".file-upload").on('change', function(){
         readURL(this);

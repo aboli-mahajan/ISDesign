@@ -95,16 +95,25 @@ def signup():
 @app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
     if request.method == 'POST':
-        user = mongo.db.users.find_one({'email': session['email']})
+
         mongo.db.users.update_one({"email": session['email']}, {"$set": {"first_name": request.form['f_name'], "last_name": request.form['l_name'],"email": request.form['email_id'], "location": request.form['location'], "gender": request.form['gender']}})
         current_user = mongo.db.users.find_one({'email': session['email']})
         return render_template('userprofile.html', user=current_user)
+
     if request.method == 'GET':
         current_user = mongo.db.users.find_one({'email': session['email']})
         return render_template('userprofile.html', user=current_user)
 
-    return render_template('userprofile.html')
 
+
+@app.route('/profilepic', methods=['GET', 'POST'])
+def profilepic():
+        if request.method == 'POST':
+            if 'photo' in request.files:
+                photo = request.files['photo']
+                mongo.save_file(photo.filename, photo)
+                mongo.db.users.update_one({"email": session['email']}, {"$set": {"photo": photo.filename}})
+            return ("",204)
 
 @app.route('/login', methods=['POST','GET'])
 def login():
@@ -284,6 +293,9 @@ def bio():
 
         return render_template('bio.html')
 
+@app.route('/sendImage', methods=['POST'])
+def sendImage():
+    photo=str(request.form('img'))
 
 
 @app.route('/likeApartment', methods=['POST'])
