@@ -83,7 +83,7 @@
           <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
             <div class="card text-left" style="margin: 5px;">
               <a data-toggle="modal" class="open-ApartmentDialogAustin" href="#" style="text-decoration: none;" onclick="modal_display({{ AustinApartments[i].dump }})">
-              <img src="{{url_for('file', filename=AustinApartments[i].image_name )}}" class="card-img-top" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
+              <img src="{{url_for('file', filename=AustinApartments[i].image_name )}}" class="card-img-top" alt="{{ AustinApartments[i].title }}" style="object-fit: cover; width: 100%; height: 20vh;">
               <div class="card-body" style="margin:0px;">
                 <p class="card-text" style="color:black;">{{ AustinApartments[i].title }}</p>
               </div>
@@ -104,7 +104,7 @@
           <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
             <div class="card text-left" style="margin: 5px;">
               <a data-toggle="modal" class="open-ApartmentDialogAustin" href="#" style="text-decoration: none;" onclick="modal_display({{ MiamiApartments[i].dump }})">
-              <img src="{{url_for('file', filename=MiamiApartments[i].image_name )}}" class="card-img-top" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
+              <img src="{{url_for('file', filename=MiamiApartments[i].image_name )}}" class="card-img-top" alt="{{ MiamiApartments[i].title }}" style="object-fit: cover; width: 100%; height: 20vh;">
               <div class="card-body" style="margin:0px;">
                 <p class="card-text" style="color:black;">{{ MiamiApartments[i].title }}</p>
               </div>
@@ -125,7 +125,7 @@
           <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
             <div class="card text-left" style="margin: 5px;">
               <a data-toggle="modal" class="open-ApartmentDialogAustin" href="#" style="text-decoration: none;" onclick="modal_display({{ NycApartments[i].dump }})">
-              <img src="{{url_for('file', filename=NycApartments[i].image_name )}}" class="card-img-top" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
+              <img src="{{url_for('file', filename=NycApartments[i].image_name )}}" class="card-img-top" alt="{{ NycApartments[i].title }}" style="object-fit: cover; width: 100%; height: 20vh;">
               <div class="card-body" style="margin:0px;">
                 <p class="card-text" style="color:black;">{{ NycApartments[i].title }}</p>
               </div>
@@ -146,7 +146,7 @@
           <div class="col-md-3 col-sm-6 d-flex align-items-stretch">
             <div class="card text-left" style="margin: 5px;">
               <a data-toggle="modal" class="open-ApartmentDialogAustin" href="#" style="text-decoration: none;" onclick="modal_display({{ SfApartments[i].dump }})">
-              <img src="{{url_for('file', filename=SfApartments[i].image_name )}}" class="card-img-top" alt="Modern Apartment near Austin" style="object-fit: cover; width: 100%; height: 20vh;">
+              <img src="{{url_for('file', filename=SfApartments[i].image_name )}}" class="card-img-top" alt="{{ SfApartments[i].title }}" style="object-fit: cover; width: 100%; height: 20vh;">
               <div class="card-body" style="margin:0px;">
                 <p class="card-text" style="color:black;">{{ SfApartments[i].title }}</p>
               </div>
