@@ -9,7 +9,7 @@
                 <div class="side-bar">
                     <div class="user-info">
                         <form method="POST" action="/profilepic" enctype="multipart/form-data">
-                            <img class= "img-profile img-circle img-responsive center-block" src="static/images/avatar.jpeg">
+                            <img class= "img-profile img-circle img-responsive center-block" src="{{url_for('file', filename=user.photo)}}" onerror="this.src='static/images/avatar.jpeg'">
 
                          <ul class="meta list list-unstyled">
                              <li class="name">Edit
