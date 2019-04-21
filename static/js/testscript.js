@@ -1,4 +1,3 @@
-
 function checkRadio() {
     try {
         if (gender !== 'undefined') {
@@ -13,7 +12,10 @@ function checkRadio() {
                 radiobtn.checked = "true";
 
             }
-
+            else {
+                radiobtn = document.getElementById("nd");
+                radiobtn.checked = "true";
+            }
         }
 
     }
@@ -66,11 +68,12 @@ $(document).ready(function() {
     }
 
 
-    $(".file-upload").on('change', function(){
-        readURL(this);
-    });
+        $(".file-upload").on('change', function () {
+            readURL(this);
+        });
 
-    $(".upload-button").on('click', function() {
-       $(".file-upload").click();
-    });
+        $(".upload-button").on('click', function () {
+            $(".file-upload").click();
+        });
+
 });

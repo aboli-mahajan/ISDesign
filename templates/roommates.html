@@ -3,23 +3,42 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/roommates.css')}}"/>
 
     <main class="col bg-faded py-1">
+
             {%for i in range(0, length)%}
-            <div class="card flex-row flex-wrap d-flex align-items-stretch" style="margin: 20px 10px 10px 10px;">
-                <div class="card-header" style="margin-left: 15px; margin-right: 15px;">
-                    {% if  roommatesList[i].photo == 'None'%}
-                    <img class="roommatesImg" src="static/images/NoProfilePicture.png" alt="Roommates" style="object-fit: cover; height: 30vh;">
-                    {% else %}
-                    <img class="roommatesImg" src="{{url_for('file', filename=roommatesList[i].photo)}}" alt="Roommates" onerror="this.src='static/images/avatar.jpeg'" style="object-fit: cover; height: 30vh;">
-                    {% endif %}
+            {% if session['email']!=roommatesList[i].email %}
+            <div class="card flex-row flex-wrap d-flex align-items-stretch" style="margin: 20px 10px 10px 10px; height:20%;">
+                <div class="card-header" style="margin-left: 15px; margin-right: 15px; width:30%; background-color: #ffffff;">
+{#                    {% if  roommatesList[i].photo == 'None'%}#}
+{#                    <img class="roommatesImg" src="static/images/NoProfilePicture.png" alt="Roommates" style="object-fit: cover; height: 30vh;">#}
+{#                    {% else %}#}
+                    <img class="roommatesImg" src="{{url_for('file', filename=roommatesList[i].photo)}}" alt="Roommates" onerror="this.src='static/images/avatar.jpeg'" style="height: 30vh; max-width: 100%;">
+{#                    {% endif %}#}
                 </div>
                 <div class="card-body px-2" style="width:50%;">
                     <h4 class="card-title">{{roommatesList[i].first_name}}&nbsp{{roommatesList[i].last_name}}</h4>
-                    <p class="card-text text-left" style="margin-left: 0px">{{ roommatesList[i].email}}<br/>Move in: {{ roommatesList[i].movein }}<br/>Gender:<br/>Age:<br/></p>
-                    <a class="button" data-toggle="collapse" data-target="#bio{{ i }}"> <button> Show More! </button></a>
-                    <p class="collapse" id="bio{{ i }}"> {{ roommatesList[i].bio }} <br/> <a class="button" href="mailto: : {{ roommatesList[i].email }}"> Contact Me </a></p>
+                    <p class="card-text text-left" style="margin-left: 0px"><br/>Move in: {{ roommatesList[i].movein }}<br/>Gender: {{ roommatesList[i].gender }}<br/>Age: {{ roommatesList[i].age }}<br/></p>
+                    <a class="button" data-toggle="collapse" data-target="#bio{{ i }}"> <button id="show_hide" value="Show More" onclick="change()"> Show More! </button></a>
+                    <div class="collapse" id="bio{{ i }}">
+                        <p>{{ roommatesList[i].bio }} </p>
+                        <p><img src="../static/images/icon-clean.png" style="width: 4%;"> Cleanliness Level: {{ roommatesList[i].clean}}</p>
+                        <p><img src="../static/images/icon-bug.png" style="width: 4%;">Bug Friendliness: {{ roommatesList[i].bug }}</p>
+                        <p><img src="../static/images/icon-pets.png" style="width: 4%;">Pets: {{ roommatesList[i].pet }}</p>
+                        <p><img src="../static/images/icon-weekend.png" style="width: 4%;">On weekends I: {{ roommatesList[i].weekend_activity }}</p>
+                        <a class="button" href="mailto: : {{ roommatesList[i].email }}"> Contact Me </a></div>
 
                 </div>
+            {% endif %}
             </div>
           {%endfor%}
         </main>
 {% endblock content %}
+<script>
+    function change() {
+        document.getElementById("show_hide").value="Show Less";
+        {#if (btn.value=="Show More")#}
+        {#    btn.value = "Show Less";#}
+        {#else#}
+        {#    btn.value = "Show More";#}
+        {##}
+    }
+</script>
