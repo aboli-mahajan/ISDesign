@@ -18,19 +18,19 @@
                                 </div>
                                 <div class="card-body" style="padding-left:10px;">
                                   <div class = "form-check">
-                                    <input class="form-check-input" name ="city" id="austin" value="Austin" type="radio" checked="{{ city=='Austin' }}">
+                                    <input class="form-check-input" name ="city" id="austin" value="Austin" type="radio">
                                     <label class="form-check-label" for="austin">Austin</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" value="San Francisco" id="sf" name="city" type="radio" checked="{{ city=='San Francisco' }}">
+                                    <input class="form-check-input" value="San Francisco" id="sf" name="city" type="radio">
                                     <label class="form-check-label" for="sf">San Francisco</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" value="New York" id="nyc" name="city" type="radio" checked="{{ city=='New York' }}">
+                                    <input class="form-check-input" value="New York" id="nyc" name="city" type="radio">
                                     <label class="form-check-label" for="nyc">New York City</label>
                                   </div>
                                   <div class = "form-check">
-                                    <input class="form-check-input" value="Miami" id="miami" name="city" type="radio" checked="{{ city=='Miami' }}">
+                                    <input class="form-check-input" value="Miami" id="miami" name="city" type="radio">
                                     <label class="form-check-label" for="miami">Miami</label>
                                   </div>
                                 </div>
@@ -115,8 +115,8 @@
                         </li>
                     </ul>
                 </div>
-
-            </nav></form>
+                </form>
+            </nav>
 
         </aside>
         <main class="col bg-faded py-1" id="mainApartments">
@@ -213,8 +213,7 @@
     </div>
 </div>
 
-    <script type="text/javascript">
-            var city_name = "{{ city }}";
-
+<script type="text/javascript">
+    var city_name = "{{ city }}";
 </script>
 {% endblock content %}

@@ -50,36 +50,36 @@
         <div class="collapse navbar-collapse " role="navigation" id="navbarResponsive" style="margin-left: 0px;">
           <ul class="navbar-nav ml-auto" style="margin-right: 0px;">
             <li class="nav-item active">
-              <a class="nav-link" href="index">Home
+              <a class="nav-link" href="{{ url_for('index') }}">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="apartments">Find Apartment</a>
+              <a class="nav-link" href="{{ url_for('apartments') }}">Find Apartment</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="roommates">Find Roommate</a>
+              <a class="nav-link" href="{{ url_for('roommates') }}">Find Roommate</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="aboutus">About Us</a>
+              <a class="nav-link" href="{{ url_for('aboutus') }}">About Us</a>
             </li>
             {%  if session['email'] == 'admin@gmail.com' %}
             <li class="nav-item">
-              <a class="nav-link" href="admin"><i class="fas fa-user-circle fa-lg" ></i> {{session['first_name']}} </a>
+              <a class="nav-link" href="{{ url_for('admin') }}"><i class="fas fa-user-circle fa-lg" ></i> {{session['first_name']}} </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout">Sign Out</a>
+              <a class="nav-link" href="{{ url_for('logout') }}">Sign Out</a>
             </li>
             {% elif session %}
             <li class="nav-item">
-              <a class="nav-link" href="userprofile"><i class="fas fa-user-circle fa-lg" ></i> {{session['first_name']}} </a>
+              <a class="nav-link" href="{{ url_for('userprofile') }}"><i class="fas fa-user-circle fa-lg" ></i> {{session['first_name']}} </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout">Sign Out</a>
+              <a class="nav-link" href="{{ url_for('logout') }}">Sign Out</a>
             </li>
             {%  else%}
             <li class="nav-item">
-              <a class="nav-link" href="login"> Sign In </a>
+              <a class="nav-link" href="{{ url_for('login') }}"> Sign In </a>
             </li>
             {% endif %}
           </ul>

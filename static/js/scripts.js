@@ -2,26 +2,20 @@
 function checkCityRadio() {
     try {
         if (city_name !== 'undefined') {
-
             if (city_name == "Austin") {
-
                 radiobtn = document.getElementById("austin");
                 radiobtn.checked = "true";
             } else if (city_name == "San Francisco") {
                 radiobtn = document.getElementById("sf");
                 radiobtn.checked = "true";
-
             } else if (city_name == "Miami") {
                 radiobtn = document.getElementById("miami");
                 radiobtn.checked = "true";
-
             } else if (city_name == "New York") {
                 radiobtn = document.getElementById("nyc");
                 radiobtn.checked = "true";
             }
-
         }
-
     }
     catch(e){
         if(e instanceof ReferenceError){
