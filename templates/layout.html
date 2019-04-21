@@ -20,8 +20,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var url = window.location;
-        $('ul.nav-item a').filter(function() {
-             return this.href == url;
+         $('#navbarResponsive .nav-item a').filter(function() {
+           return this.href == url;
         }).parent().addClass('active');
 
         $('#profile_alert').click(function() {
@@ -47,19 +47,19 @@
         </button>
         <div class="collapse navbar-collapse " role="navigation" id="navbarResponsive" style="margin-left: 0px;">
           <ul class="navbar-nav ml-auto" style="margin-right: 0px;">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{ url_for('index') }}">Home
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('index') }}" id="home">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('apartments') }}">Find Apartment</a>
+              <a class="nav-link" href="{{ url_for('apartments') }}" id="apartments">Find Apartment</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('roommates') }}">Find Roommate</a>
+              <a class="nav-link" href="{{ url_for('roommates') }}" id="roommates">Find Roommate</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('aboutus') }}">About Us</a>
+              <a class="nav-link" href="{{ url_for('aboutus') }}" id="aboutus">About Us</a>
             </li>
             {%  if session['email'] == 'admin@gmail.com' %}
             <li class="nav-item">
