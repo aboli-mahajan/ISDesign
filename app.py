@@ -291,7 +291,12 @@ def likeApartment():
     apartment_id = str(request.form['ap_id'])
     useremail = session['email']
     user = mongo.db.users.find_one({'email': useremail})
-    userapartments = user['apartments_liked']
+    if 'apartments_liked' not in user:
+        userapartments = []
+    elif user['apartments_liked'] is None:
+        userapartments = []
+    else:
+        userapartments = user['apartments_liked']
     apartment = mongo.db.apartments.find_one({'_id': ObjectId(apartment_id)})
     seen =  set(userapartments)
     if apartment['_id'] not in seen:
@@ -299,6 +304,28 @@ def likeApartment():
         userapartments.append(apartment['_id'])
     mongo.db.users.update_one({"email": session['email']}, {"$set": {"apartments_liked": userapartments}})
     return ('', 204)
+
+
+@app.route('/admin', methods=['GET'])
+def admin():
+    users = mongo.db.users.find()
+    userDump = []
+    for usr in users:
+        if usr['email'] != 'admin@gmail.com':
+            usr_ap_ids = usr['apartments_liked']
+            usr['apartments'] = []
+            for ap_id in usr_ap_ids:
+                apartment = mongo.db.apartments.find_one({'_id': ap_id})
+                usr['apartments'].append(apartment['title'] + ' in ' + apartment['city'])
+            userDump.append(usr)
+
+    apartments = mongo.db.apartments.find()
+
+    usrlen = len(userDump)
+    aplen = apartments.count()
+
+    return render_template('admin.html', user_data=userDump, usrlen=usrlen, apartments=apartments, aplen=aplen)
+
 
 
 if __name__ == '__main__':
