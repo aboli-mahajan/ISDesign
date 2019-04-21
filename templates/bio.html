@@ -8,7 +8,7 @@
     <ul class="flex-outer" style="width: 100%; margin: auto; ">
       <li>
         <label for="movein">Move In</label>
-         <select name="movein">
+         <select name="movein" id="movein">
             <option value="immediate">Immediately</option>
             <option value="month">Within a month</option>
             <option value="threemonths">Within 3 months</option>
@@ -17,16 +17,16 @@
       <li>
 
           <label for="clean">Cleanliness Level</label>
-          <select name="clean">
+          <select name="clean" id="clean" value="{{ user['clean'] }}">
             <option value="biohazard">I can be a bio hazard</option>
-            <option value="month">I keep common spaces clean</option>
+            <option value="common">I keep common spaces clean</option>
             <option value="threemonths">I'm a dirt-o-phobe</option>
           </select>
       </li>
 
       <li>
           <label for="weekend_activity">On weekends I .. </label>
-          <select name="weekend_activity">
+          <select name="weekend_activity" id ="weekend_activity" value="{{ user['weekend_activity'] }}">
             <option value="stayin">Stay In</option>
             <option value="sad">What is a weekend? </option>
             <option value="goout">Go Out</option>
@@ -35,7 +35,7 @@
 
       <li>
           <label for="bug"> Bug-friendliness </label>
-          <select name="bug">
+          <select name="bug" id="bug">
             <option value="scream">Scream at them! </option>
             <option value="kill"> Kill them! </option>
             <option value="nokill">They are gross but I have a no kill policy </option>
@@ -44,7 +44,7 @@
 
       <li>
         <label for="pet">Pet friendliness </label>
-          <select name="pet">
+          <select name="pet" id="pet">
             <option value="cuddle">Bring on the cuddles! </option>
             <option value="like"> I'm cool with pets </option>
             <option value="allergy"> Ever heard of allergies? </option>
@@ -62,19 +62,19 @@
         <p>AGE</p>
           <ul class = "flex-inner">
         <li>
-            <input type="radio" id="range_one" name="age" value="18-25" checked>
+            <input type="radio" id="18-21" name="age" value="18-21" >
             <label for="range_one">18 - 21 </label>
         </li>
         <li>
-            <input type="radio" id="range_two" name="age" value="22-25">
+            <input type="radio" id="22-25" name="age" value="22-25">
             <label for="range_two"> 22 - 25 </label>
         </li>
         <li>
-            <input type="radio" id="range_three" name="age" value="26-30">
+            <input type="radio" id="26-30" name="age" value="26-30">
             <label for="range_three"> 26 - 30 </label>
         </li>
         <li>
-            <input type="radio" id="range_four" name="age" value="30+">
+            <input type="radio" id="30+" name="age" value="30+">
             <label for="range_four"> 30+ </label>
         </li>
         </ul>
@@ -86,5 +86,19 @@
     </ul>
   </form>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+        document.getElementById('movein').value = "{{ user['movein'] }}";
+        document.getElementById('clean').value = "{{ user['clean'] }}";
+        document.getElementById('weekend_activity').value = "{{ user['weekend_activity'] }}";
+        document.getElementById('bug').value = "{{ user['bug'] }}";
+        document.getElementById('pet').value = "{{ user['pet'] }}";
+        document.getElementById('bio').value = "{{ user['bio']}}.";
+
+    }
+)
+var age = "{{ user['age'] }}";
+</script>
 
 {% endblock content %}

@@ -101,9 +101,11 @@ def userprofile():
         return render_template('userprofile.html', user=current_user)
     if request.method == 'GET':
         current_user = mongo.db.users.find_one({'email': session['email']})
+
         return render_template('userprofile.html', user=current_user)
 
     return render_template('userprofile.html')
+
 
 
 @app.route('/login', methods=['POST','GET'])
@@ -274,12 +276,11 @@ def bio():
             mongo.db.users.update_one({"email": session['email']}, {
                 "$set": {"movein": request.form['movein'], "clean": request.form['clean'], "bug": request.form['bug'],
                          "weekend_activity": request.form['weekend_activity'], "pet": request.form['pet'],
-                         "age": request.form['age'], "bio":request.form['bio']}})
+                         "age": request.form['age'], "bio": str.strip(request.form['bio'])}})
             current_user = mongo.db.users.find_one({'email': session['email']})
             return render_template('bio.html', user=current_user)
         if request.method == 'GET':
             current_user = mongo.db.users.find_one({'email': session['email']})
-
             return render_template('bio.html', user=current_user)
 
         return render_template('bio.html')
