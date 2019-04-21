@@ -82,3 +82,12 @@
     color: black;
 }
 
+#adminUserTable td,th{
+    text-align: center;
+    vertical-align: middle;
+}
+
+#adminApTable td,th{
+    text-align: center;
+    vertical-align: middle;
+}

@@ -114,7 +114,8 @@ function modal_display(data) {
     apDiv.appendChild(createModal(data));
   var modalDiv = document.getElementById('apartmentDetailsModal');
   modalDiv.style.display = 'block';
-  modalDiv.style.overflow="scroll";
+  modalDiv.style.overflowY ="scroll";
+  modalDiv.style.maxHeight = '90%';
   var body = document.getElementById('mainBody');
   body.style.overflow = "hidden";
 }
@@ -123,9 +124,6 @@ function modal_display(data) {
 function createModal(data){
   let outerDiv = document.createElement('div');
   outerDiv.classList.add("modal-body", "mx-0");
-  // outerDiv.style.height = "100%";
-  // outerDiv.style.position = "fixed";
-  outerDiv.style.overflowY = "scroll";
 
   let titleDiv = document.createElement('div');
   let titleH = document.createElement('h6');
@@ -164,7 +162,6 @@ function createModal(data){
 
   let img = document.createElement('img');
   img.src = data['image_url'];
-  // img.style.cssText = "height: 30vh; weight: 100%;";
 
   titleDiv.appendChild(titleH);
   titleDiv.appendChild((titleP));

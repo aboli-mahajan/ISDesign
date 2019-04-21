@@ -95,17 +95,25 @@ def signup():
 @app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
     if request.method == 'POST':
-        user = mongo.db.users.find_one({'email': session['email']})
+
         mongo.db.users.update_one({"email": session['email']}, {"$set": {"first_name": request.form['f_name'], "last_name": request.form['l_name'],"email": request.form['email_id'], "location": request.form['location'], "gender": request.form['gender']}})
         current_user = mongo.db.users.find_one({'email': session['email']})
         return render_template('userprofile.html', user=current_user)
+
     if request.method == 'GET':
         current_user = mongo.db.users.find_one({'email': session['email']})
-
         return render_template('userprofile.html', user=current_user)
 
-    return render_template('userprofile.html')
 
+
+@app.route('/profilepic', methods=['GET', 'POST'])
+def profilepic():
+        if request.method == 'POST':
+            if 'photo' in request.files:
+                photo = request.files['photo']
+                mongo.save_file(photo.filename, photo)
+                mongo.db.users.update_one({"email": session['email']}, {"$set": {"photo": photo.filename}})
+            return ("",204)
 
 
 @app.route('/login', methods=['POST','GET'])
@@ -285,6 +293,9 @@ def bio():
 
         return render_template('bio.html')
 
+@app.route('/sendImage', methods=['POST'])
+def sendImage():
+    photo=str(request.form('img'))
 
 
 @app.route('/likeApartment', methods=['POST'])
@@ -292,7 +303,12 @@ def likeApartment():
     apartment_id = str(request.form['ap_id'])
     useremail = session['email']
     user = mongo.db.users.find_one({'email': useremail})
-    userapartments = user['apartments_liked']
+    if 'apartments_liked' not in user:
+        userapartments = []
+    elif user['apartments_liked'] is None:
+        userapartments = []
+    else:
+        userapartments = user['apartments_liked']
     apartment = mongo.db.apartments.find_one({'_id': ObjectId(apartment_id)})
     seen =  set(userapartments)
     if apartment['_id'] not in seen:
@@ -300,6 +316,28 @@ def likeApartment():
         userapartments.append(apartment['_id'])
     mongo.db.users.update_one({"email": session['email']}, {"$set": {"apartments_liked": userapartments}})
     return ('', 204)
+
+
+@app.route('/admin', methods=['GET'])
+def admin():
+    users = mongo.db.users.find()
+    userDump = []
+    for usr in users:
+        if usr['email'] != 'admin@gmail.com':
+            usr_ap_ids = usr['apartments_liked']
+            usr['apartments'] = []
+            for ap_id in usr_ap_ids:
+                apartment = mongo.db.apartments.find_one({'_id': ap_id})
+                usr['apartments'].append(apartment['title'] + ' in ' + apartment['city'])
+            userDump.append(usr)
+
+    apartments = mongo.db.apartments.find()
+
+    usrlen = len(userDump)
+    aplen = apartments.count()
+
+    return render_template('admin.html', user_data=userDump, usrlen=usrlen, apartments=apartments, aplen=aplen)
+
 
 
 if __name__ == '__main__':
