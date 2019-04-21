@@ -1,4 +1,3 @@
-
 function checkRadio() {
     try {
         if (gender !== 'undefined') {
@@ -66,11 +65,12 @@ $(document).ready(function() {
     }
 
 
-    $(".file-upload").on('change', function(){
-        readURL(this);
-    });
+        $(".file-upload").on('change', function () {
+            readURL(this);
+        });
 
-    $(".upload-button").on('click', function() {
-       $(".file-upload").click();
-    });
+        $(".upload-button").on('click', function () {
+            $(".file-upload").click();
+        });
+
 });
