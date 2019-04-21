@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid">
+    <br>
+    <h3>Admin Dashboard</h3>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Users</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Apartments</a>
+                </div>
+            </nav>
+            <br>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" style="overflow-x: auto;">
+                    <table class="table table-bordered" cellspacing="0" id="adminUserTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Bug affinity</th>
+                                <th scope="col">Cleanliness</th>
+                                <th scope="col">Pets?</th>
+                                <th scope="col">Move In</th>
+                                <th scope="col">Weekend Activity</th>
+                                <th scope="col">Apartments Liked</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in range(0, usrlen) %}
+                            <tr>
+                                <td>{{ user_data[i].first_name }}  {{ user_data[i].last_name }}</td>
+                                <td>{{ user_data[i].location }}</td>
+                                <td>{{ user_data[i].bug }}</td>
+                                <td>{{ user_data[i].clean }}</td>
+                                <td>{{ user_data[i].pet }}</td>
+                                <td>{{ user_data[i].movein }}</td>
+                                <td>{{ user_data[i].weekend_activity }}</td>
+                                <td>
+                                    {% for ap in user_data[i].apartments %}
+                                        <p>{{ ap }}</p>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" style="overflow-x: auto;">
+                    <table class="table table-bordered" cellspacing="0" id="adminApTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Bedrooms</th>
+                                <th scope="col">Furnished</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Preview</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in range(0, aplen) %}
+                            <tr>
+                                <td>{{ apartments[i].title }}</td>
+                                <td>{{ apartments[i].city }}</td>
+                                <td>{{ apartments[i].bedrooms }}</td>
+                                <td>{{ apartments[i].furnished }}</td>
+                                <td>{{ apartments[i].price_range }}</td>
+                                <td>
+                                    <img src="{{url_for('file', filename=apartments[i].image_name )}}" alt="{{ apartments[i].title }}" style="height:25vh;width:20vw;">
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
