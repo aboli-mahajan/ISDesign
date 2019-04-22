@@ -12,7 +12,6 @@
                     <ul class="flex-md-column navbar-nav ml-auto" style="margin-top:20px; width:100%;">
                         <li class="nav-item" style="margin:0px; margin-bottom:20px;">
                             <div class = "card-group-item" style="width: 100%;">
-                                <form>
                                 <fieldset class="form-group">
                                 <div class = "card-header my-0" style="">
                                   <h5>City</h5>
@@ -131,7 +130,7 @@
                 {%for i in range(0, length)%}
                 <div class="card flex-row flex-wrap d-flex align-items-stretch" style="margin: 20px 10px 10px 10px;">
                     <div class="card-header" style="margin-left: 15px; margin-right: 15px;">
-                        <img class="apartmentsImg" src="{{url_for('file', filename=apartmentsList[i].image_name )}}" alt="Modern Apartment near Austin" style="object-fit: cover; height: 30vh;">
+                        <img class="apartmentsImg" src="{{url_for('file', filename=apartmentsList[i].image_name )}}" alt="{{ apartmentsList[i].title }}" style="object-fit: cover; height: 30vh;">
                     </div>
                     <div class="card-body px-2" style="width:50%;">
                         <h4 class="card-title">{{ apartmentsList[i].title }}</h4>

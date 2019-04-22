@@ -12,16 +12,16 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
-  <body>
-	  <div id="header">
+<body>
+  <div id="header">
     <div id="header-content">
-        <a href="index">
-        <img class="center"  src="static/images/Logosignin.png" style="position: relative; height:auto; background-size: contain;"/>
+        <a href="{{ url_for('index') }}">
+        <img class="center img-responsive"  src="static/images/Logosignin.png" style="position: relative; height:auto; background-size: contain;"/>
         </a>
     </div>
-</div>
+  </div>
   <p>&nbsp;</p>
-  	<p>&nbsp;</p>
+  <p>&nbsp;</p>
    <!-- body code goes here -->
   	<div class="container">
 	
@@ -67,11 +67,10 @@
   <script type="text/javascript">
 
       $(document).ready(function () {
-            $('#linkclose').click(function () {
-                $('#foo').hide('fade');
-            });
-
-});
+        $('#linkclose').click(function () {
+          $('#foo').hide('fade');
+        });
+      });
 
 </script>
 </body>

@@ -18,6 +18,9 @@ def generateKey():
     return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
 
 
+# This is the route to handle requests to the index or home page
+# Apartments are fetched city-wise and sent to the html file
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -92,6 +95,8 @@ def signup():
     return render_template('signup.html')
 
 
+# This is the route to handle requests to the user profile page which handles update requests as well
+
 @app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
     if request.method == 'POST':
@@ -135,6 +140,7 @@ def login():
 
     return render_template('login.html', error='')
 
+
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -151,13 +157,21 @@ def register():
 
     return render_template('register.html')
 
+
+# This code retrieves the file stored by mongodb in GridFS
+
 @app.route('/file/<filename>')
 def file(filename):
     return mongo.send_file(filename)
 
+
 @app.route('/privacypolicy')
 def privacypolicy():
     return render_template('privacypolicy.html')
+
+
+# This function handles the request from the modal Ajax query.
+# It parses the request parameters and adds a new entry to the database
 
 @app.route('/addapartments', methods=['GET', 'POST'])
 def addapartments():
@@ -192,6 +206,11 @@ def logout():
         session.clear()
         return redirect(url_for('login'))
 
+
+# This function handles multiple requests
+# All apartments or apartments filtered by a city can be fetched
+# The post request handles the filtering parameters. The data retrieved from MongoDB is converted into a json response
+# that can be used by the HTML and javascript code by parsing. A json dump is sent along with the python dict
 
 @app.route('/apartments', methods=['GET', 'POST'], defaults={'city': None})
 @app.route('/apartments/<city>', methods=['GET'])
@@ -278,6 +297,8 @@ def fetch_roommates(params):
     return roommatesList
 
 
+# The user's profile and preference details are saved in the database. The data is parsed as per datatypes.
+
 @app.route('/bio', methods=['GET', 'POST'])
 def bio():
         if request.method == 'POST':
@@ -293,10 +314,14 @@ def bio():
 
         return render_template('bio.html')
 
+
 @app.route('/sendImage', methods=['POST'])
 def sendImage():
     photo=str(request.form('img'))
 
+
+# Here a link is created between the user and the apartments she/he likes.
+# An array of apartments ids is saved in the database. Duplicate entries are prevented.
 
 @app.route('/likeApartment', methods=['POST'])
 def likeApartment():
