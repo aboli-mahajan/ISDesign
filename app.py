@@ -246,19 +246,26 @@ def apartments(city):
             return render_template('apartments.html', apartmentsList=apartmentDump, length=length)
 
     if request.method == 'POST':
-        request_params['city'] = str(request.form['city'])
-        bedrooms = []
-        for i in request.form.getlist('bedrooms'):
-            bedrooms.append(int(i))
-        price_range = []
-        for i in request.form.getlist('price'):
-            price_range.append(str(i))
-        request_params['bedrooms'] = {"$in": bedrooms}
-        request_params['price_range'] = {"$in": price_range}
-        if int(request.form['furnished']) == 1:
-            request_params['furnished'] = True
-        else:
+        if 'city' in request.form:
+            request_params['city'] = str(request.form['city'])
+
+        if 'bedrooms' in request.form:
+            bedrooms = []
+            for i in request.form.getlist('bedrooms'):
+                bedrooms.append(int(i))
+                request_params['bedrooms'] = {"$in": bedrooms}
+
+        if 'price' in request.form:
+            price_range = []
+            for i in request.form.getlist('price'):
+                price_range.append(str(i))
+                request_params['price_range'] = {"$in": price_range}
+
+        if 'furnished' not in request.form:
             request_params['furnished'] = False
+        else:
+            request_params['furnished'] = True
+
     apartmentsList = fetch_apartments(request_params)
     apartmentDump = []
     for apartment in apartmentsList:
