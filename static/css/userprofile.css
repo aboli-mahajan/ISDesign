@@ -2,12 +2,14 @@ body{
 background:#f9f9fb;
 }
 
+/*target space for picture*/
 .profile-pic {
     max-width: 200px;
     max-height: 200px;
     display: block;
 }
 
+/*camera icon*/
 .img-profile{
     max-width: 200px;
     max-height: 200px;
@@ -17,6 +19,7 @@ background:#f9f9fb;
 .file-upload {
     display: none;
 }
+
 .circle {
     border-radius: 1000px !important;
     overflow: hidden;
@@ -26,10 +29,12 @@ background:#f9f9fb;
     position: absolute;
     top: 72px;
 }
+
 img {
     max-width: 100%;
     height: auto;
 }
+
 .p-image {
   position: absolute;
   top: 167px;
@@ -37,9 +42,11 @@ img {
   color: #666666;
   transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
 }
+
 .p-image:hover {
   transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
 }
+
 .upload-button {
   font-size: 1.2em;
 }
@@ -49,16 +56,11 @@ img {
   color: #999;
 }
 
-
-
-
-
-
-
 .view-account{
 background:#FFFFFF;
 margin-top:20px;
 }
+
 .view-account .pro-label {
 font-size: 13px;
 padding: 4px 5px;
@@ -68,6 +70,7 @@ margin-left: 10px;
 display: inline-block
 }
 
+/*overriding primary button characteristics*/
 .btn-primary {
     background-color: #21b25b;
 }
