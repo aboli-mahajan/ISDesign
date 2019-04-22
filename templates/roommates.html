@@ -11,8 +11,8 @@
             </div>
             <div class="card-body px-2" style="width:50%;">
                 <h4 class="card-title">{{roommatesList[i].first_name}}&nbsp{{roommatesList[i].last_name}}</h4>
-                <p class="card-text text-left" style="margin-left: 0px"><br/>Move in: {{ roommatesList[i].movein }}<br/>Gender: {{ roommatesList[i].gender }}<br/>Age: {{ roommatesList[i].age }}<br/>Current Location: {{ roommatesList[i].location }}</p> {# display more information about user #}
-                <a class="button" data-toggle="collapse" data-target="#bio{{ i }}"> <button id="show_hide" value="Show More" onclick="change()"> Show More! </button></a>
+                <p class="card-text text-left" style=""><br/>Move in: {{ roommatesList[i].movein }}<br/>Gender: {{ roommatesList[i].gender }}<br/>Age: {{ roommatesList[i].age }}<br/>Current Location: {{ roommatesList[i].location }}</p> {# display more information about user #}
+                <a class="button" data-toggle="collapse" data-target="#bio{{ i }}"> <button id="show_hide" value="Show More"> Show More! </button></a>
                 <div class="collapse" id="bio{{ i }}"> {# collapse helps to keep some data hidden #}
                     <p>{{ roommatesList[i].bio }} </p>
                     <p><img src="../static/images/icon-clean.png" style="width: 4%;"> {{ roommatesList[i].clean}}</p>
