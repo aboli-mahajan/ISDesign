@@ -284,7 +284,7 @@ def bio():
             mongo.db.users.update_one({"email": session['email']}, {
                 "$set": {"movein": request.form['movein'], "clean": request.form['clean'], "bug": request.form['bug'],
                          "weekend_activity": request.form['weekend_activity'], "pet": request.form['pet'],
-                         "age": request.form['age'], "bio": str.strip(request.form['bio'])}})
+                         "age": request.form['age'], "bio": str.strip(str(request.form['bio']))}})
             current_user = mongo.db.users.find_one({'email': session['email']})
             return render_template('bio.html', user=current_user)
         if request.method == 'GET':
@@ -338,7 +338,9 @@ def admin():
 
     return render_template('admin.html', user_data=userDump, usrlen=usrlen, apartments=apartments, aplen=aplen)
 
-
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('notfound.html'), 404
 
 if __name__ == '__main__':
     app.run()

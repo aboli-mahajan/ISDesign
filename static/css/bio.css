@@ -1,21 +1,32 @@
-/*body {*/
-  /*!*font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;*!*/
-  /**/
-  /*box-sizing: border-box;*/
-  /*height: 100%;*/
-/*}*/
 #mainBody{
-  background-color: #3AAFAB ;
-}
-
-textarea{
-  resize: none;
-  flex: 1 0 500px;
+  background-color: #3AAFAB ; /*setting background color to green in keeping with the website theme*/
 }
 
 .container {
 
-  color: #fff;
+  color: #fff; /*sets text color to white for visual contrast*/
+}
+
+.flex-outer li label,   /*setting styles for all labels in the form*/
+.flex-outer li p {
+  padding: 1%;
+  font-weight: 300;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.flex-outer {            /*setting height and width for outer container in the form*/
+  width: 100%;
+  height: 100%;
+}
+
+.flex-outer > li:not(:last-child) {   /*setting styles for all list elements except for the button which is the last list item in the form*/
+  margin-bottom: 20px;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;    /*properties for CSS flex shorthand: <'flex-grow'> <'flex-shrink'> <'flex-basis'> for responsive design*/
 }
 
 .flex-outer,
@@ -23,44 +34,26 @@ textarea{
   list-style-type: none;
   padding: 0;
 }
+
 .flex-outer li,
 .flex-inner {
-  display: flex;
+  display: flex;  /*allows wrapping of elements in flex box as screen resolution changes*/
   flex-wrap: wrap;
   align-items: center;
 }
 
 .flex-inner {
-  padding: 2% 8px;
   justify-content: space-between;
 }
 
-.flex-outer {
-  width: 100%;
-  height: 100%;
-}
-
-.flex-outer > li:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.flex-outer li label,
-.flex-outer li p {
-  padding: 8px;
-  font-weight: 300;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-}
-
-.flex-outer > li > label,
-.flex-outer li p {
-  flex: 1 0 120px;
-  /*max-width: 220px;*/
+textarea{
+  resize: none;
+  flex: 1 0 500px; /*properties for CSS flex shorthand: <'flex-grow'> <'flex-shrink'> <'flex-basis'> for responsive design*/
 }
 
 .flex-outer > li > label + *,
 .flex-inner {
-  flex: 1 0 220px;
+  flex: 1 0 220px; /*properties for CSS flex shorthand: <'flex-grow'> <'flex-shrink'> <'flex-basis'> for responsive design*/
 }
 
 .flex-outer li p {
@@ -88,9 +81,8 @@ select {
     padding: 2%;
 }
 
-
 .flex-inner li {
-  width: 100px;
+  width: 100px; /* (width of radio button/width of inner flex box) 100px/ 515px = 19.4174757281%*/
 }
 
 .flex-outer li button {
