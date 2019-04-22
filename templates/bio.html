@@ -4,101 +4,129 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bio.css')}}"/>
 
 <div class="container">
-  <form method="POST" style="padding-top: 4%; width:100%;">
-    <ul class="flex-outer" style="width: 100%; margin: auto; ">
-      <li>
-        <label for="movein">Move In</label>
-         <select name="movein" id="movein">
-            <option value="Immediately">Immediately</option>
-            <option value="Within a month">Within a month</option>
-            <option value="Within 3 months">Within 3 months</option>
-        </select>
-      </li>
-      <li>
+    {# 30px (target padding)/ 930px (width of form)  = 3.22580645161% #}
+    <form method="POST" style="padding-top: 3.22580645161%; width:100%;">
+    {# flex-outer is the container for all form elements except for radio buttons. We used a CSS flexbox to make sure
+    that the form is responsive. We also listed form fields as list items in an unordered list for consistent structure#}
+        <ul class="flex-outer" style="width: 100%; margin: auto; ">
+            <li>
+            {# first dropdown to select when a user wants to move in to a new place #}
+                <label for="movein">Move In</label> {# the form label/text for cleanliness level dropdown #}
+                {# select indicates that the element is a dropdown. Property can be stored in/retrieved from database
+                based on 'name'. Javascript uses id value to get/fetch element #}
+                <select name="movein" id="movein">
+                    {# dropdown list options  #}
+                    <option value="Immediately">Immediately</option>
+                    <option value="Within a month">Within a month</option>
+                    <option value="Within 3 months">Within 3 months</option>
+                </select>
+            </li>
 
-          <label for="clean">Cleanliness Level</label>
-          <select name="clean" id="clean" value="{{ user['clean'] }}">
-            <option value="I can be a bio hazard">I can be a bio hazard</option>
-            <option value="I keep common spaces clean">I keep common spaces clean</option>
-            <option value="I am a dirt-o-phobe">I'm a dirt-o-phobe</option>
-          </select>
-      </li>
+            <li>
+            {# second dropdown to select the cleanliness level a user maintains/expects  #}
+                <label for="clean">Cleanliness Level</label> {# the form label/text for cleanliness level dropdown #}
+                {# select indicates that the element is a dropdown. Property can be stored in/retrieved from database
+                based on 'name'. Javascript uses id value to get/fetch element #}
+                <select name="clean" id="clean" value="{{ user['clean'] }}">
+                    <option value="I can be a bio hazard">I can be a bio hazard</option>
+                    <option value="I keep common spaces clean">I keep common spaces clean</option>
+                    <option value="I am a dirt-o-phobe">I'm a dirt-o-phobe</option>
+                </select>
+            </li>
 
-      <li>
-          <label for="weekend_activity">On weekends I .. </label>
-          <select name="weekend_activity" id ="weekend_activity" value="{{ user['weekend_activity'] }}">
-            <option value="Stay In">I stay in on weekends</option>
-            <option value="What is a weekend?">What is a weekend? </option>
-            <option value="Go Out">i like to go out on weekends</option>
-          </select>
-      </li>
+            <li>
+             {# third dropdown to select user's weekend activity  #}
+                <label for="weekend_activity">On weekends I .. </label>{# the form label/text for cleanliness level dropdown #}
+                {# select indicates that the element is a dropdown. Property can be stored in/retrieved from database
+                based on 'name'. Javascript uses id value to get/fetch element #}
+                <select name="weekend_activity" id ="weekend_activity" value="{{ user['weekend_activity'] }}">
+                    {# dropdown list options  #}
+                    <option value="I stay in on weekends">I stay in on weekends</option>
+                    <option value="What is a weekend?">What is a weekend? </option>
+                    <option value="I like to go out on weekends">I like to go out on weekends</option>
+                </select>
+            </li>
 
-      <li>
-          <label for="bug"> Bug-friendliness </label>
-          <select name="bug" id="bug">
-            <option value="Scream at them!">Bugs! Scream at them! </option>
-            <option value="Kill them!"> Bugs! Kill them! </option>
-            <option value="They are gross but I have a no kill policy">Bugs are gross but I have a no kill policy </option>
-          </select>
-      </li>
+            <li>
+                {# fourth dropdown to select user's bug tolerance  #}
+                <label for="bug"> Bug-friendliness </label> {# the form label/text for cleanliness level dropdown #}
+                {# select indicates that the element is a dropdown. Property can be stored in/retrieved from database
+                based on 'name'. Javascript uses id value to get/fetch element #}
+                <select name="bug" id="bug">
+                    {# dropdown list options  #}
+                    <option value="Scream at them!">Bugs! Scream at them! </option>
+                    <option value="Kill them!"> Bugs! Kill them! </option>
+                    <option value="Bugs are gross but I have a no kill policy">Bugs are gross but I have a no kill policy </option>
+                </select>
+            </li>
 
-      <li>
-        <label for="pet">Pet friendliness </label>
-          <select name="pet" id="pet">
-            <option value="Bring on the cuddles!">Bring on the cuddles! </option>
-            <option value="I am cool with pets"> I'm cool with pets </option>
-            <option value="Ever heard of allergies?"> Ever heard of allergies? </option>
-            <option value="Do not like them, do not want them"> Don't like pets, don't want pets </option>
-          </select>
-      </li>
-      <li>
-          <label for="bio" >My Bio </label>
-          <textarea id = "bio" rows="6" cols="50" name="bio" style="padding: 2px">
+            <li>
+                {# fifth dropdown to select user's pet friendliness  #}
+                <label for="pet">Pet friendliness </label> {# the form label/text for cleanliness level dropdown #}
+                {# select indicates that the element is a dropdown. Property can be stored in/retrieved from database
+                based on 'name'. Javascript uses id value to get/fetch element #}
+                <select name="pet" id="pet">
+                    {# dropdown list options  #}
+                    <option value="Bring on the cuddles!">Bring on the cuddles! </option>
+                    <option value="I am cool with pets"> I'm cool with pets </option>
+                    <option value="Ever heard of allergies?"> Ever heard of allergies? </option>
+                    <option value="Do not like them, do not want them"> Don't like pets, don't want pets </option>
+                </select>
+            </li>
 
-          </textarea>
-      </li>
+            <li>
+                {# textarea for users to provide additional information about themselves #}
+                <label for="bio" >My Bio </label>
+                {# rows are cols specify the height and width of the textarea #}
+                {# padding: 2px (desired padding) / 328px (width of element) = 0.609756097% #}
+                <textarea id = "bio" rows="6" cols="50" name="bio" style="padding: 0.609756097%"></textarea>
+            </li>
 
-      <li>
-        <p>AGE</p>
-          <ul class = "flex-inner">
-        <li>
-            <input type="radio" id="18-21" name="age" value="18-21" >
-            <label for="range_one">18 - 21 </label>
-        </li>
-        <li>
-            <input type="radio" id="22-25" name="age" value="22-25">
-            <label for="range_two"> 22 - 25 </label>
-        </li>
-        <li>
-            <input type="radio" id="26-30" name="age" value="26-30">
-            <label for="range_three"> 26 - 30 </label>
-        </li>
-        <li>
-            <input type="radio" id="30+" name="age" value="30+">
-            <label for="range_four"> 30+ </label>
-        </li>
+            <li>
+                {# flexbox to make radio buttons responsive. The radio buttons wrap up inside the flexbox as screen resolution changes #}
+                <p>AGE</p>
+                <ul class = "flex-inner">
+                    <li>
+                        <input type="radio" id="18-21" name="age" value="18-21" >
+                        <label for="range_one">18 - 21 </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="22-25" name="age" value="22-25">
+                        <label for="range_two"> 22 - 25 </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="26-30" name="age" value="26-30">
+                        <label for="range_three"> 26 - 30 </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="30+" name="age" value="30+">
+                        <label for="range_four"> 30+ </label>
+                    </li>
+                </ul>
+            </li>
+
+            {# button to submit the bio form #}
+            <li>
+                <button type="submit" onclick="bio_info()" >Submit</button>
+            </li>
         </ul>
-        </li>
-
-        <li>
-        <button type="submit" onclick="bio_info()" >Submit</button>
-        </li>
-    </ul>
-  </form>
+    </form>
 </div>
 
+{# this script stores the values that users select when they fill the bio form for the first time. so, when users log in
+ the next time, they can see the values they had previously selected. #}
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function() {
+        {# form elements are fetched by 'id' and their value is set to current user values of corresponding fields #}
         document.getElementById('movein').value = "{{ user['movein'] }}";
         document.getElementById('clean').value = "{{ user['clean'] }}";
         document.getElementById('weekend_activity').value = "{{ user['weekend_activity'] }}";
         document.getElementById('bug').value = "{{ user['bug'] }}";
         document.getElementById('pet').value = "{{ user['pet'] }}";
         document.getElementById('bio').value = "{{ user['bio']}}.";
-
     }
 )
-var age = "{{ user['age'] }}";
+    var age = "{{ user['age'] }}";
 </script>
 
 {% endblock content %}
