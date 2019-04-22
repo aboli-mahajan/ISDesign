@@ -26,14 +26,17 @@ function checkCityRadio() {
 
 function myFunction(x) {
   var elements = document.getElementsByClassName('apartmentsImg');
+  var homer_profile = document.getElementById(('homer_profile'));
   if (x.matches) { // If media query matches
     for(var i=0;i<elements.length;i++){
       elements[i].style.width="100%";
     }
+    homer_profile.style.display = 'none';
   } else {
     for(var i=0;i<elements.length;i++){
       elements[i].style.width="30vw";
     }
+    homer_profile.style.display = 'block';
   }
 }
 
