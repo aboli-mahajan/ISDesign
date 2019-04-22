@@ -90,11 +90,6 @@ def aboutus():
     return render_template('aboutus.html')
 
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-
 # This is the route to handle requests to the user profile page which handles update requests as well
 
 @app.route('/userprofile', methods=['GET', 'POST'])

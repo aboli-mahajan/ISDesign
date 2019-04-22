@@ -147,7 +147,8 @@
 
         <div class="modal fade" id="addApartmentModal" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content mx-0">
+              <form method="POST" action="/addapartments" enctype="multipart/form-data" id="apartmentForm" style="margin:0px;">
               <div class="modal-header mx-0">
                 <h5 class="modal-title mx-0">Add Apartment</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -155,14 +156,13 @@
                 </button>
               </div>
               <div class="modal-body mx-0">
-                <form method="POST" action="/addapartments" enctype="multipart/form-data" id="apartmentForm">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Title" required/>
                     </div>
                     <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" name="city" id="city" class="form-control" placeholder="City"/>
+                        <input type="text" name="city" id="city" class="form-control" placeholder="City" required/>
                     </div>
                     <fieldset class="form-group">
                         <label for="furnished">Furnished</label>
@@ -172,15 +172,14 @@
                           <label class="form-check-label" for="yes">Yes</label>
                         </div>
                         <div class = "form-check form-check-inline">
-                          <input class="form-check-input" name="furnished" id="no" value="no" type="radio">
+                          <input class="form-check-input" name="furnished" id="no" value="no" type="radio" checked>
                           <label class="form-check-label" for="no">No</label>
                         </div>
                         </div>
                     </fieldset>
                     <div class="form-group">
                         <label for="bedrooms">Number of Bedrooms</label>
-                        <select id="bedrooms" name="bedrooms" class="form-control">
-                            <option selected>Choose option</option>
+                        <select id="bedrooms" name="bedrooms" class="form-control" required>
                             <option value="1">1 bedroom</option>
                             <option value="2">2 bedrooms</option>
                             <option value="3">3 bedrooms</option>
@@ -188,8 +187,7 @@
                     </div>
                     <div class="form-group">
                         <label for="price">Price Range</label>
-                        <select id="price" name="price_range" class="form-control">
-                            <option selected>Choose option</option>
+                        <select id="price" name="price_range" class="form-control" required>
                             <option value="$500 - $800">$500 - $800</option>
                             <option value="$800 - $1000">$800 - $1000</option>
                             <option value="$1000 - $1200">$1000 - $1200</option>
@@ -199,14 +197,14 @@
                     </div>
                     <div class="form-group">
                       <label for="apartmentImage">Apartment Image</label>
-                      <input type="file" name="photo" class="form-control-file" id="apartmentImage">
+                      <input type="file" name="photo" class="form-control-file" id="apartmentImage" required>
                     </div>
-                </form>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" onclick="submitApartmentForm()">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               </div>
+              </form>
             </div>
           </div>
         </div>
