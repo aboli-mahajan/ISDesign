@@ -90,11 +90,6 @@ def aboutus():
     return render_template('aboutus.html')
 
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-
 # This is the route to handle requests to the user profile page which handles update requests as well
 
 @app.route('/userprofile', methods=['GET', 'POST'])
@@ -251,19 +246,26 @@ def apartments(city):
             return render_template('apartments.html', apartmentsList=apartmentDump, length=length)
 
     if request.method == 'POST':
-        request_params['city'] = str(request.form['city'])
-        bedrooms = []
-        for i in request.form.getlist('bedrooms'):
-            bedrooms.append(int(i))
-        price_range = []
-        for i in request.form.getlist('price'):
-            price_range.append(str(i))
-        request_params['bedrooms'] = {"$in": bedrooms}
-        request_params['price_range'] = {"$in": price_range}
-        if int(request.form['furnished']) == 1:
-            request_params['furnished'] = True
-        else:
+        if 'city' in request.form:
+            request_params['city'] = str(request.form['city'])
+
+        if 'bedrooms' in request.form:
+            bedrooms = []
+            for i in request.form.getlist('bedrooms'):
+                bedrooms.append(int(i))
+                request_params['bedrooms'] = {"$in": bedrooms}
+
+        if 'price' in request.form:
+            price_range = []
+            for i in request.form.getlist('price'):
+                price_range.append(str(i))
+                request_params['price_range'] = {"$in": price_range}
+
+        if 'furnished' not in request.form:
             request_params['furnished'] = False
+        else:
+            request_params['furnished'] = True
+
     apartmentsList = fetch_apartments(request_params)
     apartmentDump = []
     for apartment in apartmentsList:
@@ -363,7 +365,9 @@ def admin():
 
     return render_template('admin.html', user_data=userDump, usrlen=usrlen, apartments=apartments, aplen=aplen)
 
-
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('notfound.html'), 404
 
 if __name__ == '__main__':
     app.run()

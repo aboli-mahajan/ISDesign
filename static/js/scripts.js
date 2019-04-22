@@ -145,13 +145,6 @@ function get_card(data, cnt) {
 }
 
 
-// Submit the add apartment form
-
-function submitApartmentForm(){
-  $('#apartmentForm').submit();
-}
-
-
 // Creates the modal populated with apartment details
 
 function modal_display(data) {
