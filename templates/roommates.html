@@ -2,16 +2,6 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/roommates.css')}}"/>
 
-<script>
-    function change() {
-        alert("alert fired!")
-        if(document.getElementById("show_hide").value="Show More"){
-            document.getElementById("show_hide").value="Show Less"
-        }
-
-    }
-</script>
-
 <main class="col bg-faded py-1">
     {%for i in range(0, length)%} {# iterating over roommatesList (list of users from the database except the current user) #}
         {% if session['email']!=roommatesList[i].email %} {# excludes current user from roommatesList #}
