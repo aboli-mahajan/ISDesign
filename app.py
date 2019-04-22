@@ -353,6 +353,7 @@ def admin():
         if usr['email'] != 'admin@gmail.com':
             usr_ap_ids = usr['apartments_liked']
             usr['apartments'] = []
+            usr['user_id'] = str(usr['_id'])
             for ap_id in usr_ap_ids:
                 apartment = mongo.db.apartments.find_one({'_id': ap_id})
                 usr['apartments'].append(apartment['title'] + ' in ' + apartment['city'])
@@ -363,11 +364,35 @@ def admin():
     usrlen = len(userDump)
     aplen = apartments.count()
 
-    return render_template('admin.html', user_data=userDump, usrlen=usrlen, apartments=apartments, aplen=aplen)
+    return render_template('admin.html', user_data=userDump, usrlen=usrlen, apartments=apartments, aplen=aplen, usrDump=dumps(userDump))
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('notfound.html'), 404
+
+
+@app.route('/delete_user/<id>', methods=['DELETE'])
+def delete_user(id):
+    mongo.db.users.delete_one({'_id': ObjectId(str(id))})
+    users = mongo.db.users.find()
+    userDump = []
+    for usr in users:
+        if usr['email'] != 'admin@gmail.com':
+            usr_ap_ids = usr['apartments_liked']
+            usr['apartments'] = []
+            usr['user_id'] = str(usr['_id'])
+            for ap_id in usr_ap_ids:
+                apartment = mongo.db.apartments.find_one({'_id': ap_id})
+                usr['apartments'].append(apartment['title'] + ' in ' + apartment['city'])
+            userDump.append(usr)
+
+    apartments = mongo.db.apartments.find()
+
+    usrlen = len(userDump)
+    aplen = apartments.count()
+
+    return render_template('admin.html', user_data=userDump, usrlen=usrlen, apartments=apartments, aplen=aplen, usrDump=dumps(userDump))
+
 
 if __name__ == '__main__':
     app.run()

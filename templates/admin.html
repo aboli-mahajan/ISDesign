@@ -26,6 +26,7 @@
                                 <th scope="col">Move In</th>
                                 <th scope="col">Weekend Activity</th>
                                 <th scope="col">Apartments Liked</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +43,9 @@
                                     {% for ap in user_data[i].apartments %}
                                         <p>{{ ap }}</p>
                                     {% endfor %}
+                                </td>
+                                <td>
+                                    <div class="delete_user" onclick="deleteUser({{ i  }},{{ usrDump }})"><i class="fa fa-trash"></i></div>
                                 </td>
                             </tr>
                             {% endfor %}

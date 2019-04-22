@@ -256,3 +256,16 @@ function likeApartment(apartment, i) {
     }
   });
 }
+
+
+// Delete user Ajax call
+
+function deleteUser(index, userDump) {
+  $.ajax({
+    type: 'DELETE',
+    url: 'delete_user' + '/' + userDump[index]['user_id'],
+    accept: {
+      javascript: 'application/javascript'
+    }
+  });
+}
