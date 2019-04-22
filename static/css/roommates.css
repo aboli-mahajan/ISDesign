@@ -1,3 +1,4 @@
+/*Styling the "Show More" button*/
 button {
     background-color: #641f3c;
     color: white;
@@ -7,8 +8,7 @@ button {
     display: inline-block;
     font-size: 16px;
     margin: 7px 2px;
-    border-radius: 25px;
+    border-radius: 25px; /*rounded corners for button*/
     cursor: pointer;
     font-weight: 400;
-
 }

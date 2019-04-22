@@ -1,11 +1,9 @@
-body
-{
-background: #fff;
+body {
+background: #fff; /*setting background color white for 404 page*/
 font-family: Roboto, sans-serif;
 }
 
-.texthead
-{
+.texthead {
 	color: #921E4E;
 	font-size: 170px;
 }
@@ -20,4 +18,3 @@ font-family: Roboto, sans-serif;
 	color: #050102;
 	font-size: 37px;
 }
-

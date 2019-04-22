@@ -17,9 +17,12 @@
   box-sizing: border-box;
 }
 
+/*setting primary button style*/
 .btn-primary {
     background-color: #21b25b;
 }
+
+/*styling header throughout the website*/
 #header {
     background-color: #641f3c;
     /*Opacity start*/
@@ -40,6 +43,7 @@
     margin: 10px;
 }
 
+/*footer style throughout website*/
 .footer {
 	text-align: center;
 	color: white;

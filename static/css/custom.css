@@ -1,9 +1,3 @@
-/*!
- * Bootstrap v4.0.0 (https://getbootstrap.com)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 :root {
   
   --breakpoint-xs: 0;
@@ -34,10 +28,7 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-@-ms-viewport {
-  width: device-width;
-}
-
+/*main elements being displayed as blocks*/
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
@@ -67,10 +58,12 @@ body {
 	margin: 0;
 }
 
+/*setting focus on input fields*/
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
 
+/**styling header for sign in and register pages*/
 #header {
     background-color: black;
     /*Opacity start*/
@@ -78,28 +71,29 @@ body {
     filter: alpha(opacity=80);
     moz-opacity: 0.4;
     khtml-opacity: 0.4;
-    opacity: 1;
+    opacity: 0.6;
     /*Opacity end*/
     color: white;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 8%;
+    height: 11%;
+    padding: 0;
+    margin: 0;
 }
 
 #header #header-content {
     margin: 10px;
 }
 
-#header-content {
-	/*background-color: #641f3c;*/
-}
 hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
 }
 
+/*overriding default header settings*/
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -163,7 +157,6 @@ small,
 	font-size: 0.9em;
 	position: fixed;
     bottom: 0;
-	
 }
 
 #contactus {
@@ -172,6 +165,7 @@ small,
 	font-weight: bold;
 }
 
+/*styling the copyright symbol*/
 #copyright {
 	margin: 0;
 	padding: 0;
@@ -185,13 +179,11 @@ small,
   margin-right: auto;
   height: 58px;
   width: 196px;
-	
   filter:brightness(300%);
 }
 
 .logo_bar {
-	
-	background-color: #941E4E;
+  background-color: #941E4E;
 }
 code,kbd,pre,samp {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -203,27 +195,6 @@ code {
   word-break: break-word;
 }
 
-#header {
-    background-color: black;
-    /*Opacity start*/
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    filter: alpha(opacity=80);
-    moz-opacity: 0.4;
-    khtml-opacity: 0.4;
-    opacity: 0.6;
-    /*Opacity end*/
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 11%;
-    padding: 0;
-    margin: 0;
-}
-#header #header-content {
-    margin: 10px;
-}
 .container {
   width: 100%;
   padding-right: 15px;
@@ -286,10 +257,10 @@ code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-	margin-top: 6%;
+  margin-top: 6%;
 }
 
-
+/*media queries to make pages responsive*/
 @media (min-width: 576px) {
   .col-sm {
     -ms-flex-preferred-size: 0;

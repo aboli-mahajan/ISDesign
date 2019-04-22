@@ -4,17 +4,17 @@
 }
 
 @font-face {
-    font-family: "Crimson";
+    font-family: "Crimson"; /*setting primary font style*/
     src: url('../fonts/CrimsonText-Regular.ttf') format("truetype");
 }
 
 @font-face {
-    font-family: "Roboto";
+    font-family: "Roboto"; /*setting secondary font style*/
     src: url('../fonts/Roboto-Regular.ttf') format("truetype");
 }
 
 body {
-	background: url('../images/HomeBackground.jpg') no-repeat fixed;
+	background: url('../images/HomeBackground.jpg') no-repeat fixed; /*setting background image that covers the whole page*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -120,6 +120,7 @@ a:hover {
 	transform: scale(1.1) perspective(1px);
 }
 
+/*adding media queries to make about us page responsive*/
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
