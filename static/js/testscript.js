@@ -51,7 +51,7 @@ function checkAge(){
 
 }
 
-
+//Code which allows to edit and render the profile picture
 $(document).ready(function() {
     checkRadio();
     checkAge();
