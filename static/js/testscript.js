@@ -1,3 +1,5 @@
+//JavaScript code which handles the functionality in the userprofile code
+
 function checkRadio() {
     try {
         if (gender !== 'undefined') {

@@ -1,6 +1,7 @@
+//This JavaScript file has code for the functionality used in index and apartments page
+
 // The function selects the appropriate radio button for the city in the apartments page
 // when a user navigates from the recommended cities section
-
 function checkCityRadio() {
     try {
         if (city_name !== 'undefined') {
