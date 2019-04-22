@@ -1,3 +1,5 @@
+// The function selects the appropriate radio button for the city in the apartments page
+// when a user navigates from the recommended cities section
 
 function checkCityRadio() {
     try {
@@ -24,6 +26,8 @@ function checkCityRadio() {
     }
 }
 
+// This function makes the images in the cards responsive when a change in the window size is detected
+
 function myFunction(x) {
   var elements = document.getElementsByClassName('apartmentsImg');
   var homer_profile = document.getElementById(('homer_profile'));
@@ -31,14 +35,18 @@ function myFunction(x) {
     for(var i=0;i<elements.length;i++){
       elements[i].style.width="100%";
     }
-    homer_profile.style.display = 'none';
+    if(homer_profile != null)
+      homer_profile.style.display = 'none';
   } else {
     for(var i=0;i<elements.length;i++){
       elements[i].style.width="30vw";
     }
-    homer_profile.style.display = 'block';
+    if(homer_profile != null)
+      homer_profile.style.display = 'block';
   }
 }
+
+// Checks whether the window size matches the defined media width
 
 var x = window.matchMedia("(max-width: 480px)")
  // Call listener function at run time
@@ -46,6 +54,10 @@ x.addEventListener('load', myFunction)
 x.addEventListener('change', myFunction)
 myFunction(x)
 checkCityRadio();
+
+
+// This function is used to submit the values from the apartments filter to the method on the backend.
+// Once the function returns successfully, it regenerates the html with the new data
 
 $('#apartmentsFilter').submit(function(e) {
   e.preventDefault();
@@ -79,6 +91,9 @@ $('#apartmentsFilter').submit(function(e) {
   });
 });
 
+
+// This function creates the cards to display apartment details on receiving the response from Ajax query.
+// The HTML elements are created in a hierarchical fashion and their properties are retained.
 
 function get_card(data, cnt) {
   let outerDiv = document.createElement('div');
@@ -129,10 +144,14 @@ function get_card(data, cnt) {
 }
 
 
+// Submit the add apartment form
+
 function submitApartmentForm(){
   $('#apartmentForm').submit();
 }
 
+
+// Creates the modal populated with apartment details
 
 function modal_display(data) {
   console.log(data);
@@ -149,6 +168,8 @@ function modal_display(data) {
   body.style.overflow = "hidden";
 }
 
+
+// Generates the HTML code for the modal with the apartment details
 
 function createModal(data){
   let outerDiv = document.createElement('div');
@@ -225,6 +246,8 @@ function closeApartmentDetails() {
   body.style.overflow = "scroll";
 }
 
+
+// Submits a request that links a user and apartment
 
 function likeApartment(apartment, i) {
   $.ajax({
